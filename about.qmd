@@ -1,0 +1,117 @@
+---
+title: "Guillaume P. Dehaene, Artificial Intelligence Engineer"
+about:
+  template: solana
+  image: guillaume_dehaene.jpg
+aliases: 
+  - index.html
+---
+
+## Artificial Intelligence Engineer {.unnumbered .unlisted}
+
+# Professional experience
+
+#### Artificial Intelligence Engineer
+
+Geodaisics | Sept. 2023
+
+- Creation and implementation of the internal validation procedures of AI models.
+- Creation of a shared workflow and tooling for the research team.
+- Wrote and reviewed developpement procedures for the internal Quality Management System in accordance with ISO 13485 / 14971 / 62304 / ...
+
+#### Senior data Engineer
+
+Marelli - Smart Me Up | July 2022 - July 2023
+
+- Project supervision: embedded gesture recognition (precision >95%).
+- Definition of data needs for the Grenoble teams.
+- Responsible for the internal online data annotation tool.
+- Supervision of the annotation team (12 people). Creation and supervision of the data sharing procedures.
+
+#### R&D computer vision engineer
+
+Marelli Smart Me Up | April 2020 - June 2022
+
+- Creation and implementation of an unsupervised stereo vision algorithm.
+- Creation of an internal library to standardize R&D activity on neural networks.
+- Features: automated code standards, unit testing, web visualization of results,
+reproducibility.
+- Technology watch on computer vision. Algorithms adapted: SwAV, Mean teacher,
+depth estimation, transformer.
+
+#### Assistant professor in Statistics
+
+Ecole Polytechnique Fédérale de Lausanne | Sept. 2016 - April 2020
+
+- Neurips 2016 AABI workshop Disney Research Paper Awards awarded for:
+Expectation Propagation performs a smoothed gradient descent, G. Dehaene.
+- Creation and implementation of a method to validate the results of a Bayesian
+statistical analysis
+- Supervision of one PhD. and three master theses.
+
+# Skills
+
+- Computer science:
+
+  - Python (expert): django, pytorch, tensorflow
+  - Rust
+  - Javascript
+  - HTML, CSS
+  - git
+  - Docker
+  - Linux admin
+
+- Management:
+
+  - Agile project management
+  - R&D supervision
+  - CI / CD
+
+- Artificial Intelligence:
+
+  - Neural networks
+  - Computer vision
+  - Statistical theory
+  - Bayesian statistics
+
+- Languages:
+  - French (native)
+  - English (Bilingual)
+
+# Education
+
+Ph.D. in neuroscience and statistics, Université de Genève, Université Paris- Descartes \
+2012-2016
+
+Ecole Polytechnique engineer diploma, Ecole Polytechnique Paris \
+2008-2012
+
+Master in Cognitive Science, ENS-Paris, EHESS, Université Paris-Descartes \
+2011-2012
+
+# Publications
+
+A deterministic and computable Bernstein-von Mises theorem \
+G. Dehaene, 2019 \
+Presented at: Séminaire BIG (Grenoble), Séminaire de Statistique de Berne
+
+Expectation Propagation in the large data limit \
+G. Dehaene and S. Barthelmé, 2018 \
+Journal of the Royal Statistical Society - Series B
+Presented at: Séminaire BIG (Grenoble), Séminaire de Statistique de Genève
+
+Expectation Propagation performs a smoothed gradient descent \
+G. Dehaene, 2016 \
+Advances in Approximate Bayesian Inference NeuRIPS workshop
+**NeurIPS AABI Workshop 2016 Disney Research Paper Awards**
+
+Bounding errors of Expectation-Propagation \
+G. Dehaene and S. Barthelmé, 2015 \
+NeurIPS 2015
+
+
+# Hobbies
+
+- [Judo](https://www.jcgoncelin.com/)
+- Bandes dessinées
+- Competitive coding: [Advent of code](https://adventofcode.com/)

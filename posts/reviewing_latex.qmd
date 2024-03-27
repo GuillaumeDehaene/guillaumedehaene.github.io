@@ -1,0 +1,93 @@
+---
+draft: true
+
+title: "Latex in 2024"
+description: |
+    It was the best of typesetting,
+    it was the worst of typesetting.
+    Latex in 2024: is it the right tool for the job?
+date: ""
+categories:
+  - quarto
+  - latex
+  - typesetting
+---
+
+I was introduced to Latex when I started having to produce Math research documents at university.
+I vividly remember the intense feeling of confusion I felt at the time.
+Surely, it couldn't be that hard to figure out how to interact with this typesetting software? Everybody else was doing it?
+Well, I figured after a while that Latex has quite a steep learning curve, and I am far from the only one who has struggled with it.
+This review aims to clarify a little bit:
+
+- the current state of Latex in 2024.
+- what are some alternatives in 2024.
+
+Hopefully, this can help you understand the current state of typesetting and choose the right tool for you.
+
+# Latex: the established solution
+
+[Latex](https://www.overleaf.com/about/why-latex) is a typesetting software which [dates back to 1977](https://en.wikipedia.org/wiki/TeX#History)]. The user writes a `.tex` document which mixes text content, math content, and typesetting information. This document is then compiled into an output format, typically `pdf`.
+
+Latex remains the de-facto standard for typesetting documents in a large fraction of the academic world. According to me, here are the most important strong points it has:
+
+- ✅ consistent typesetting. When typesetting manually, it is very easy to create a document where the font changes between lines, the styling is inconsistent, etc. Using Latex, it is easy to avoid such errors.
+- ✅ beautiful typesetting. Out of the box, Latex documents look good. They further support many non-trivial features such as table-of-contents, table-of-figures, etc.
+- ✅ math support. With Latex, it is possible to integrate seamlessly math equations with text, whether inline or in separate blocks.
+- ✅ citation management. Latex offers an automated system for integrating academic citations.
+- ✅ separation of content and style. Latex explictly separates the content of the document from the way the document is constructed. This makes it easy to restructure a given content to multiple styles.
+- ✅ Free. Latex is Free/Libre Open Source Software (FLOSS).
+- ✅ Large community.
+
+These great features explain how Latex has become ubiquitous in math departments. Whether you want to write lecture notes, exercise sheets, or a research article, Latex offers you many key features for this.
+
+Furthermore, for that final case of writing-up a resarch article, Latex is absolutely required. Math journals will not accept work that is submitted in another format because their editorial pipeline uses Latex. This is critical to keep in mind because **software value cannot be separated from its surrounding context**.
+
+So why isn't everyone using Latex? Here are some of the key flaws:
+
+- ⛔ Steep learning curve.
+- ⛔ Cryptic source documents.
+- ⛔ Sparse documentation.
+- ⛔ Slow rendering. If you want to check that your document renders correctly, compilation time is extremely long. I was shared a PhD. thesis on overleaf the other day, and it took roughly five minutes before I could see the end result. 
+- ⛔ Limited formats.
+- ⛔ Hard to extend and integrate in other software.
+
+In my experience, these flaws are typically minimized by experienced Latex users. That makes sense: once you are fluent enough to predict how a given fragment of source code will render, these issues become more manageable.
+
+Overall, I would not recommend using Latex in 2024, even for writing math research articles. There are better typesetting systems which keep the possibility of returning to Latex if needed.
+
+# Latex: draft
+
+[Latex dates back to 1977](https://en.wikipedia.org/wiki/TeX#History) when Donald Knuth, unsatisfied with the typesetting of his book, *the art of computer programming*, decided that he was going to do it himself. He then created the Tex typesetting language. Latex was later created in 1984 by Leslie Lamport as a system of Tex macros.
+
+Latex is now a fairly standard FLOSS (Free/Libre Open Source Software) software project, maintained by a small core team which organizes coding activity inside a bigger ecosystem. Another key part of that modern ecosystem is overleaf, a modern platform for collaborative document writing. Overleaf is a for-profit project that offers high-quality guides and many templates for writing documents.
+
+Latex offers a tool to typeset written documents of extremely high quality. The results are typically crisp and beautiful, and, most importantly, **consistent**. Have you ever come accross a document or email where fonts or text sizes where mixed in some weird way? That type of error is very hard to do with Latex. 
+
+Latex is fairly limited in how it can be integrated with other software, as far as I know:
+
+- Output formats are fairly limited, with PDF being the central option.
+- One Latex engine offers integration into the (fairly marginal) Lua scripting language.
+- Besides the inherent scriptability of the Tex language, interacting with core elements of the language requires a very high degree of expertise.
+
+These points might seem minor but for software, the ecosystem around them is a significant fraction of their practical value. If somebody comes up with a cool Javascript app to generate protein diagrams, you are going to struggle to integrate that in your tex document.
+
+Finally, I must talk about the learnability of Latex.
+
+# Lyx: the human-readable variant
+
+Both communities will probably hate this description, but [Lyx](https://www.lyx.org/) is essentially a rich-text editor for Latex documents: on your screen, you see formatted text and equations, but the underlying document is a close variant of Latex. When you render your document, Lyx writes a `.tex` file which is then converted to pdf. The Lyx app further provides a convenient interface for interacting with the formatting of your document. For example, when writing an equation, you can select commands, operators, etc. from several menus (that are somewhat cryptically organized).
+
+Latex users typically disapprove of Lyx. As far as I can tell, the issue is that Lyx uses Latex as a typesetting engine. As such, it writes `.tex` files which are not necessarily quite right from the point of view of the Latex purist (though I honestly don't have a single example, no matter how small, to share). Regardless of whether Lyx does a perfect job of automatically writing Latex code, this separation of Latex into two components:
+
+- the rendering engine, a machine-readable set of typesetting instructions.
+- the human-readable source document.
+
+is a very interesting innovation that Lyx brought forward. By separating the two, Lyx provides a way to simplify the human-side of the task.
+
+Lyx shares many limitations with Latex.
+
+Overall, for any newcomer, I would recommend Lyx over Latex for simple documents which does not use advanced Latex features. As soon as advanced features are desired, then it is probably better to shift to another tool since entangling Lyx and Latex is going to create a headache.
+
+# Pandoc: the polyglot
+
+[Pandoc](https://pandoc.org/) is a massive toolbox for converting files between different typesetting formats. For example, you *could* convert a HTML document to a MSWord `.docx`, but it is more sensible to start from a single simple typesetting format, which could Latex, and then convert to any target you desire. Pandoc thus provides an easy fix to the Latex limitation that it can only output to a single format.
