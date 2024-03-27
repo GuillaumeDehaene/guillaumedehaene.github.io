@@ -1,5 +1,8 @@
 project:
-  type: website
+    # publishing to github pages
+    # ref: https://quarto.org/docs/publishing/github-pages.html#render-to-docs
+    type: website
+    output-dir: docs
 
 website:
   title: "Guillaume Dehaene"

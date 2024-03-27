@@ -80,32 +80,32 @@ statistical analysis
 
 # Education
 
-Ph.D. in neuroscience and statistics, Université de Genève, Université Paris- Descartes \
+**Ph.D. in neuroscience and statistics** \ Université de Genève, Université Paris- Descartes \
 2012-2016
 
-Ecole Polytechnique engineer diploma, Ecole Polytechnique Paris \
+**Ecole Polytechnique engineer diploma** \ Ecole Polytechnique Paris \
 2008-2012
 
-Master in Cognitive Science, ENS-Paris, EHESS, Université Paris-Descartes \
+**Master in Cognitive Science** \ ENS-Paris, EHESS, Université Paris-Descartes \
 2011-2012
 
 # Publications
 
-A deterministic and computable Bernstein-von Mises theorem \
+**A deterministic and computable Bernstein-von Mises theorem** \
 G. Dehaene, 2019 \
 Presented at: Séminaire BIG (Grenoble), Séminaire de Statistique de Berne
 
-Expectation Propagation in the large data limit \
+**Expectation Propagation in the large data limit** \
 G. Dehaene and S. Barthelmé, 2018 \
-Journal of the Royal Statistical Society - Series B
+Journal of the Royal Statistical Society - Series B \
 Presented at: Séminaire BIG (Grenoble), Séminaire de Statistique de Genève
 
-Expectation Propagation performs a smoothed gradient descent \
+**Expectation Propagation performs a smoothed gradient descent** \
 G. Dehaene, 2016 \
-Advances in Approximate Bayesian Inference NeuRIPS workshop
+Advances in Approximate Bayesian Inference NeuRIPS workshop \
 **NeurIPS AABI Workshop 2016 Disney Research Paper Awards**
 
-Bounding errors of Expectation-Propagation \
+**Bounding errors of Expectation-Propagation** \
 G. Dehaene and S. Barthelmé, 2015 \
 NeurIPS 2015
 
