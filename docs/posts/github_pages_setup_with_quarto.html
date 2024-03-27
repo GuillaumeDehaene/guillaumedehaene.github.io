@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-03-27">
+<meta name="description" content="Setting up a Quarto website is not trivial. Here is my setup to publish a single github repository using the www.gandi.net DNS.">
 
-<title>Guillaume Dehaene – Blog</title>
+<title>Guillaume Dehaene – github pages setup for this website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +104,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <script>
 MathJax = {
     tex: {
@@ -107,35 +115,6 @@ MathJax = {
 };
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -146,7 +125,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Guillaume Dehaene</span>
     </a>
   </div>
@@ -157,17 +136,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../publications.html"> 
 <span class="menu-text">My research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
 </ul>
@@ -183,21 +162,56 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="github pages">github pages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="latex">latex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="quarto">quarto <span class="quarto-category-count">(2)</span></div><div class="category" data-category="typesetting">typesetting <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#desired-setup" id="toc-desired-setup" class="nav-link active" data-scroll-target="#desired-setup">Desired setup</a></li>
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a>
+  <ul class="collapse">
+  <li><a href="#standard-deploy-to-github-pages" id="toc-standard-deploy-to-github-pages" class="nav-link" data-scroll-target="#standard-deploy-to-github-pages">Standard deploy to github pages</a>
+  <ul class="collapse">
+  <li><a href="#quarto-configuration" id="toc-quarto-configuration" class="nav-link" data-scroll-target="#quarto-configuration">Quarto configuration</a></li>
+  <li><a href="#github-configuration" id="toc-github-configuration" class="nav-link" data-scroll-target="#github-configuration">github configuration</a></li>
+  </ul></li>
+  <li><a href="#custom-domain-for-github-page" id="toc-custom-domain-for-github-page" class="nav-link" data-scroll-target="#custom-domain-for-github-page">Custom domain for github page</a>
+  <ul class="collapse">
+  <li><a href="#quarto-configuration-1" id="toc-quarto-configuration-1" class="nav-link" data-scroll-target="#quarto-configuration-1">Quarto configuration</a></li>
+  <li><a href="#gandi-dns-configuration" id="toc-gandi-dns-configuration" class="nav-link" data-scroll-target="#gandi-dns-configuration">Gandi DNS configuration</a></li>
+  <li><a href="#github-configuration-1" id="toc-github-configuration-1" class="nav-link" data-scroll-target="#github-configuration-1">github configuration</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
+<h1 class="title">github pages setup for this website</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">quarto</div>
+    <div class="quarto-category">github pages</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    <p>Setting up a Quarto website is not trivial. Here is my setup to publish a single github repository using the www.gandi.net DNS.</p>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 27, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,92 +221,148 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to my blog. I write mostly about:</p>
+<section id="desired-setup" class="level1">
+<h1>Desired setup</h1>
+<p>Setting up a Quarto website on github pages is fairly straightforward: <a href="https://quarto.org/docs/publishing/github-pages.html">you just need to follow the docs</a>! In my case though, I want to do something slightly more complex because I want multiple github pages websites:</p>
 <ul>
-<li>statistics, with a focus on Bayesian statistics, variational inference and theory.</li>
-<li>typesetting documents with Quarto and alternatives.</li>
-<li>programming, mostly in Python.</li>
+<li>one for my personal website (on which you are right now).</li>
+<li>one for my other Quarto projects. For each one, I want to have an associated github pages which can serve as a demo or readme.</li>
+</ul>
+<p>Furthermore, I want the personnal website to use the root URL <code>www.guillaumedehaene.com</code> while I want project pages to use the default <code>guillaumedehaene.github.io/project_name/</code>.</p>
+<p>These requirements are summarized in <a href="#fig-setup" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<p>::::::{.cell fig-cap:” My desired setup for my Quarto websites=“a main website, and several project-specific demos."” layout-align=“default”}</p>
+<div class="cell-output-display">
+<div id="fig-setup" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-setup">flowchart LR
+    subgraph github
+        direction TB
+        A
+        C
+        E
+    end
+    subgraph urls
+        direction TB
+        B
+        BB
+        D
+        F
+    end
+    A[Website repository] --&gt; B[guillaumedehaene.github.io]
+    B -- use URL --- BB[www.guillaumedehaene.com]
+    C[Project A] --&gt; D[guillaumedehaene.github.io/project_a]
+    E[Project B] --&gt; F[guillaumedehaene.github.io/project_b]
+</pre>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+<p>::::::</p>
+</section>
+<section id="steps" class="level1">
+<h1>Steps</h1>
+<section id="standard-deploy-to-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="standard-deploy-to-github-pages">Standard deploy to github pages</h2>
+<section id="quarto-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-configuration">Quarto configuration</h3>
+<p>First, we need a Quarto website. I have decided that I will render the website on my machine, and that github will just serves the files once they are uploaded (<a href="https://quarto.org/docs/publishing/github-pages.html#render-to-docs">corresponding to this section of the docs</a>).</p>
+<p>Thus, we just change the global website configuration so that <code>quarto render</code> compiles to the <code>docs</code> folder:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="github-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="github-configuration">github configuration</h3>
+<p>Now, we need to setup github:</p>
+<ul>
+<li>add a <code>.nojekyll</code> file at the root of repository.</li>
+<li>create a new github repository <strong>with the specific repository name</strong> <code>USERNAME.github.io</code>.
+<ul>
+<li>normally, github associates <code>USERNAME.github.io/REPOSITORY_NAME</code> to a given repository.</li>
+<li>if we use this special repository name, github uses the root URL <code>USERNAME.github.io</code>.</li>
+</ul></li>
+<li>push the project to the remote repository.</li>
+<li>go to settings &gt;&gt; pages and tell github pages to publish from the <code>docs</code> folder on the <code>main</code> branch.</li>
+</ul>
+<p>At this point, <code>guillaumedehaene.github.io</code> is fully functional.</p>
+</section>
+</section>
+<section id="custom-domain-for-github-page" class="level2">
+<h2 class="anchored" data-anchor-id="custom-domain-for-github-page">Custom domain for github page</h2>
+<section id="quarto-configuration-1" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-configuration-1">Quarto configuration</h3>
+<p>We will make it so that the website answers to my custom url <code>www.guillaumedehaene.com</code>.</p>
+<p>First, we need to tell Quarto about the custom url:</p>
+<ul>
+<li><p>create a <code>cname</code> file at the project root containing the custom url:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>cname</strong></pre>
+</div>
+<pre data-filename="cname"><code>www.guillaumedehaene.com</code></pre>
+</div></li>
+<li><p>modify the project configuration file: <code>_quarto.yml</code> to include the cname file and so that Quarto uses the custom url:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_quarto.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">    # publishing to github pages</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    # ref: https://quarto.org/docs/publishing/github-pages.html#render-to-docs</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> CNAME</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Guillaume Dehaene"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> www.guillaumedehaene.com</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>render and push to github.</p></li>
+</ul>
+</section>
+<section id="gandi-dns-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="gandi-dns-configuration">Gandi DNS configuration</h3>
+<p>We will configure the DNS server so that it knows to serve the custom url to the right github pages url.</p>
+<p>On gandi, I get to set the DNS configuration manually.</p>
+<pre><code>@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1711531617 10800 3600 604800 10800
+@ 1800 IN A 185.199.108.153
+@ 1800 IN A 185.199.109.153
+@ 1800 IN A 185.199.110.153
+@ 1800 IN A 185.199.111.153
+www 10800 IN CNAME guillaumedehaene.github.io.</code></pre>
+<p>NB: <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">the IP addresses are documented on this page of the github docs</a>.</p>
+<p>I’m honestly a bit confused about exactly what is going on under the hood here, but as far as I can tell:</p>
+<ul>
+<li>the first four lines set the binding between the root domain <code>guillaumedehaene.com</code> and my github page.</li>
+<li>the fifth line sets the binding specifically for the <code>www</code> subdomain.</li>
+</ul>
+</section>
+<section id="github-configuration-1" class="level3">
+<h3 class="anchored" data-anchor-id="github-configuration-1">github configuration</h3>
+<p>Finally, we tell github about the cname:</p>
+<ul>
+<li>go to settings &gt;&gt; pages and tell github pages to use a <code>Custom domain</code> and specify your desired full domain</li>
+<li>wait a day, then enable https</li>
 </ul>
 
 
+</section>
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="typesetting,quarto,latex" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1711551130847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1069">
-<div class="thumbnail">
-<p><a href="./posts/quarto_is_better.html" class="no-external"></a></p><a href="./posts/quarto_is_better.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/quarto_is_better.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/quarto_is_better.html" class="no-external">Don’t use Latex: Quarto is better!</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/quarto_is_better.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('typesetting'); return false;">
-typesetting
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
-quarto
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('latex'); return false;">
-latex
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/quarto_is_better.html" class="no-external">Latex is the defacto standard typesetting tool in large fractions of the academic world, but can we do better? Now that Quarto is around, the answer is yes! </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/quarto_is_better.html" class="no-external">
-<div class="listing-date">
-Mar 28, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="quarto,github pages" data-listing-date-sort="1711494000000" data-listing-file-modified-sort="1711551121470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="728">
-<div class="thumbnail">
-<p><a href="./posts/github_pages_setup_with_quarto.html" class="no-external"></a></p><a href="./posts/github_pages_setup_with_quarto.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/github_pages_setup_with_quarto.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/github_pages_setup_with_quarto.html" class="no-external">github pages setup for this website</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/github_pages_setup_with_quarto.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
-quarto
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('github pages'); return false;">
-github pages
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/github_pages_setup_with_quarto.html" class="no-external">Setting up a Quarto website is not trivial. Here is my setup to publish a single github repository using the www.gandi.net DNS. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/github_pages_setup_with_quarto.html" class="no-external">
-<div class="listing-date">
-Mar 27, 2024
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

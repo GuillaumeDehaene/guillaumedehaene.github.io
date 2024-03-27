@@ -1,0 +1,136 @@
+---
+title: "github pages setup for this website"
+description: |
+    Setting up a Quarto website is not trivial.
+    Here is my setup to publish a single github repository using the www.gandi.net DNS.
+date: "03/27/2024"
+categories:
+  - quarto
+  - github pages
+---
+
+# Desired setup
+
+Setting up a Quarto website on github pages is fairly straightforward: [you just need to follow the docs](https://quarto.org/docs/publishing/github-pages.html)!
+In my case though, I want to do something slightly more complex because I want multiple github pages websites:
+
+- one for my personal website (on which you are right now).
+- one for my other Quarto projects. For each one, I want to have an associated github pages which can serve as a demo or readme.
+
+Furthermore, I want the personnal website to use the root URL `www.guillaumedehaene.com` while I want project pages to use the default `guillaumedehaene.github.io/project_name/`.
+
+These requirements are summarized in @fig-setup.
+
+```{mermaid}
+%% | fig-cap:" My desired setup for my Quarto websites: a main website, and several project-specific demos."
+%% | label: fig-setup
+flowchart LR
+    subgraph github
+        direction TB
+        A
+        C
+        E
+    end
+    subgraph urls
+        direction TB
+        B
+        BB
+        D
+        F
+    end
+    A[Website repository] --> B[guillaumedehaene.github.io]
+    B -- use URL --- BB[www.guillaumedehaene.com]
+    C[Project A] --> D[guillaumedehaene.github.io/project_a]
+    E[Project B] --> F[guillaumedehaene.github.io/project_b]
+```
+
+# Steps
+
+## Standard deploy to github pages
+
+### Quarto configuration
+
+First, we need a Quarto website.
+I have decided that I will render the website on my machine, and that github will just serves the files once they are uploaded ([corresponding to this section of the docs](https://quarto.org/docs/publishing/github-pages.html#render-to-docs)).
+
+Thus, we just change the global website configuration so that `quarto render` compiles to the `docs` folder:
+
+```{.yaml filename="_quarto.yml"}
+project:
+    type: website
+    output-dir: docs
+```
+
+### github configuration
+
+Now, we need to setup github:
+
+- add a `.nojekyll` file at the root of repository.
+- create a new github repository **with the specific repository name** `USERNAME.github.io`.
+    - normally, github associates `USERNAME.github.io/REPOSITORY_NAME` to a given repository.
+    - if we use this special repository name, github uses the root URL `USERNAME.github.io`.
+- push the project to the remote repository.
+- go to settings >> pages and tell github pages to publish from the `docs` folder on the `main` branch.
+
+At this point, `guillaumedehaene.github.io` is fully functional.
+
+## Custom domain for github page
+
+### Quarto configuration
+
+We will make it so that the website answers to my custom url `www.guillaumedehaene.com`.
+
+First, we need to tell Quarto about the custom url:
+
+- create a `cname` file at the project root containing the custom url:
+
+    ```{filename="cname"}
+    www.guillaumedehaene.com
+    ```
+
+- modify the project configuration file: `_quarto.yml` to include the cname file and so that Quarto uses the custom url:
+
+    ```{.yaml filename="_quarto.yml"}
+    project:
+        # publishing to github pages
+        # ref: https://quarto.org/docs/publishing/github-pages.html#render-to-docs
+        type: website
+        output-dir: docs
+        resources:
+            - CNAME
+
+    website:
+        title: "Guillaume Dehaene"
+        site-url: www.guillaumedehaene.com
+    ```
+
+- render and push to github.
+
+### Gandi DNS configuration
+
+We will configure the DNS server so that it knows to serve the custom url to the right github pages url.
+
+On gandi, I get to set the DNS configuration manually.
+
+```
+@ 10800 IN SOA ns1.gandi.net. hostmaster.gandi.net. 1711531617 10800 3600 604800 10800
+@ 1800 IN A 185.199.108.153
+@ 1800 IN A 185.199.109.153
+@ 1800 IN A 185.199.110.153
+@ 1800 IN A 185.199.111.153
+www 10800 IN CNAME guillaumedehaene.github.io.
+```
+
+NB: [the IP addresses are documented on this page of the github docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain).
+
+I'm honestly a bit confused about exactly what is going on under the hood here, but as far as I can tell:
+
+- the first four lines set the binding between the root domain `guillaumedehaene.com` and my github page.
+- the fifth line sets the binding specifically for the `www` subdomain.
+
+### github configuration
+
+Finally, we tell github about the cname:
+
+- go to settings >> pages and tell github pages to use a `Custom domain` and specify your desired full domain
+- wait a day, then enable https

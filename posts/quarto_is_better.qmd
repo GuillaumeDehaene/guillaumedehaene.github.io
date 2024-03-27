@@ -3,7 +3,7 @@ title: "Don't use Latex: Quarto is better!"
 description: |
     Latex is the defacto standard typesetting tool in large fractions of the academic world, but can we do better?
     Now that Quarto is around, the answer is yes!
-date: "03/27/2024"
+date: "03/28/2024"
 categories:
   - typesetting
   - quarto

@@ -3,30 +3,33 @@ project:
     # ref: https://quarto.org/docs/publishing/github-pages.html#render-to-docs
     type: website
     output-dir: docs
+    resources:
+        - CNAME
 
 website:
-  title: "Guillaume Dehaene"
-  page-footer: "This website was created with [Quarto](https://quarto.org/)." 
-  navbar:
-    left:
-        - blog.qmd
-    right:
-        - publications.qmd
-        -   file: about.qmd
-            text: About me
+    title: "Guillaume Dehaene"
+    site-url: www.guillaumedehaene.com
+    page-footer: "This website was created with [Quarto](https://quarto.org/)." 
+    navbar:
+        left:
+            - blog.qmd
+        right:
+            - publications.qmd
+            -   file: about.qmd
+                text: About me
 
 format:
-  html:
-    theme:
-      light: flatly
-      dark: darkly
-    toc: true
-    include-in-header:
-      text: |
-        <script>
-        MathJax = {
-            tex: {
-                tags: 'ams'  // should be 'ams', 'none', or 'all'
-            }
-        };
-        </script>
+    html:
+        theme:
+            light: flatly
+            dark: darkly
+        toc: true
+        include-in-header:
+            text: |
+                <script>
+                MathJax = {
+                    tex: {
+                        tags: 'ams'  // should be 'ams', 'none', or 'all'
+                    }
+                };
+                </script>

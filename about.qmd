@@ -1,10 +1,10 @@
 ---
 title: "Guillaume P. Dehaene, Artificial Intelligence Engineer"
 about:
-  template: solana
-  image: guillaume_dehaene.jpg
+    template: solana
+    image: guillaume_dehaene.jpg
 aliases: 
-  - index.html
+    - index.html
 ---
 
 ## Artificial Intelligence Engineer {.unnumbered .unlisted}
