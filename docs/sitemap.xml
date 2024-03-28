@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>www.guillaumedehaene.com/publications.html</loc>
-    <lastmod>2024-03-27T08:45:08.307Z</lastmod>
+    <lastmod>2024-03-28T09:01:14.748Z</lastmod>
   </url>
   <url>
     <loc>www.guillaumedehaene.com/posts/quarto_is_better.html</loc>
     <lastmod>2024-03-27T14:52:10.847Z</lastmod>
   </url>
   <url>
+    <loc>www.guillaumedehaene.com/index.html</loc>
+    <lastmod>2024-03-28T21:38:43.421Z</lastmod>
+  </url>
+  <url>
     <loc>www.guillaumedehaene.com/blog.html</loc>
     <lastmod>2024-03-25T12:43:58.150Z</lastmod>
   </url>
   <url>
-    <loc>www.guillaumedehaene.com/about.html</loc>
-    <lastmod>2024-03-27T13:44:36.289Z</lastmod>
-  </url>
-  <url>
     <loc>www.guillaumedehaene.com/posts/github_pages_setup_with_quarto.html</loc>
-    <lastmod>2024-03-27T14:52:01.470Z</lastmod>
+    <lastmod>2024-03-28T22:15:55.584Z</lastmod>
   </url>
 </urlset>

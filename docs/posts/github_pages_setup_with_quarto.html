@@ -71,12 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,9 +102,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="neutral">
 <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap')
+</style>
 <script>
 MathJax = {
     tex: {
@@ -152,7 +154,6 @@ MathJax = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -223,20 +224,24 @@ MathJax = {
 
 <section id="desired-setup" class="level1">
 <h1>Desired setup</h1>
-<p>Setting up a Quarto website on github pages is fairly straightforward: <a href="https://quarto.org/docs/publishing/github-pages.html">you just need to follow the docs</a>! In my case though, I want to do something slightly more complex because I want multiple github pages websites:</p>
+<p>Setting up a Quarto website on github pages is fairly straightforward: <a href="https://quarto.org/docs/publishing/github-pages.html">you just need to follow the docs</a>! But in case you need some help, I’m sharing here all the steps I’ve went through.</p>
+<p>In my case, I thought there would be a slight complication. I want to have multiple pages from multiple repositories:</p>
 <ul>
 <li>one for my personal website (on which you are right now).</li>
 <li>one for my other Quarto projects. For each one, I want to have an associated github pages which can serve as a demo or readme.</li>
 </ul>
-<p>Furthermore, I want the personnal website to use the root URL <code>www.guillaumedehaene.com</code> while I want project pages to use the default <code>guillaumedehaene.github.io/project_name/</code>.</p>
-<p>These requirements are summarized in <a href="#fig-setup" class="quarto-xref">Figure&nbsp;1</a>.</p>
-<p>::::::{.cell fig-cap:” My desired setup for my Quarto websites=“a main website, and several project-specific demos."” layout-align=“default”}</p>
+<p>My initial plan was the following:</p>
+<blockquote class="blockquote">
+<p>I want the personnal website to use the root domain <code>guillaumedehaene.com</code> and the default subodmain <code>www.guillaumedehaene.com</code> while I want project pages to use another subdomain <code>demo.guillaumedehaene.com</code>. I would like <code>project_a</code> to live under: <code>demo.guillaumedehaene.com/project_a</code>, etc.</p>
+</blockquote>
+<p>This didn’t work out at all, so I’ve brought all repositories together for now, a summarized in <a href="#fig-structure" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-setup" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-structure" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-structure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<pre class="mermaid mermaid-js" data-label="fig-setup">flowchart LR
+<pre class="mermaid mermaid-js" data-label="fig-structure">flowchart LR
     subgraph github
         direction TB
         A
@@ -248,22 +253,25 @@ MathJax = {
         B
         BB
         D
+        DD
         F
+        FF
     end
     A[Website repository] --&gt; B[guillaumedehaene.github.io]
     B -- use URL --- BB[www.guillaumedehaene.com]
-    C[Project A] --&gt; D[guillaumedehaene.github.io/project_a]
-    E[Project B] --&gt; F[guillaumedehaene.github.io/project_b]
+    C[Project A] --&gt; D[guillaumedehaene.github.io/project_a] -- use URL --- DD[www.guillaumedehaene.com/project_a]
+    E[Project B] --&gt; F[guillaumedehaene.github.io/project_b] -- use URL --- FF[www.guillaumedehaene.com/project_b]
 </pre>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-setup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-structure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
 </figcaption>
 </figure>
 </div>
 </div>
-<p>::::::</p>
+</div>
+<p>In the future, it would be straightforward to pull out any demo into its own subdomain, but I’ll first test out the current setup and see if I can make it work. I’m a bit unhappy about the current demo having a different style than the rest of the website but I can live with it.</p>
 </section>
 <section id="steps" class="level1">
 <h1>Steps</h1>
@@ -295,14 +303,14 @@ Figure&nbsp;1
 <li>push the project to the remote repository.</li>
 <li>go to settings &gt;&gt; pages and tell github pages to publish from the <code>docs</code> folder on the <code>main</code> branch.</li>
 </ul>
-<p>At this point, <code>guillaumedehaene.github.io</code> is fully functional.</p>
+<p>At this point, the page website <code>guillaumedehaene.github.io</code> is fully functional. Now we need to host it on its the custom domain.</p>
 </section>
 </section>
 <section id="custom-domain-for-github-page" class="level2">
 <h2 class="anchored" data-anchor-id="custom-domain-for-github-page">Custom domain for github page</h2>
 <section id="quarto-configuration-1" class="level3">
 <h3 class="anchored" data-anchor-id="quarto-configuration-1">Quarto configuration</h3>
-<p>We will make it so that the website answers to my custom url <code>www.guillaumedehaene.com</code>.</p>
+<p>We will make it so that the website answers to my custom url <code>www.guillaumedehaene.com</code>. If we omit this step, the website will act as if the custom url just acts as a redirect to the pages url.</p>
 <p>First, we need to tell Quarto about the custom url:</p>
 <ul>
 <li><p>create a <code>cname</code> file at the project root containing the custom url:</p>
@@ -341,21 +349,29 @@ Figure&nbsp;1
 @ 1800 IN A 185.199.109.153
 @ 1800 IN A 185.199.110.153
 @ 1800 IN A 185.199.111.153
-www 10800 IN CNAME guillaumedehaene.github.io.</code></pre>
+www 10800 IN CNAME guillaumedehaene.github.io.
+demo 10800 IN CNAME guillaumedehaene.github.io.</code></pre>
 <p>NB: <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">the IP addresses are documented on this page of the github docs</a>.</p>
 <p>I’m honestly a bit confused about exactly what is going on under the hood here, but as far as I can tell:</p>
 <ul>
 <li>the first four lines set the binding between the root domain <code>guillaumedehaene.com</code> and my github page.</li>
 <li>the fifth line sets the binding specifically for the <code>www</code> subdomain.</li>
+<li>the sixth line sets the binding specifically for the <code>demo</code> subdomain. Initially, I wanted to use this to host the demo pages for my Quarto projects, but I’m not using it currently.</li>
+</ul>
+<p>There’s an underlying magic step where github knows, because of the <code>cname</code> file that we need to add in each repository, which pages correspond to which subdomain:</p>
+<ul>
+<li>the website <code>cname</code> file contains <code>www.guillaumedehaene.com</code> on websites that should use that domain. Currently, that is all my repositories.</li>
+<li>the website <code>cname</code> file contains <code>demo.guillaumedehaene.com</code> on websites that should use that domain. I have tested that this works on a single demo repo. I’m not sure what would happen if I hooked up two. Github might be very confused if I do that 🤷.</li>
 </ul>
 </section>
 <section id="github-configuration-1" class="level3">
 <h3 class="anchored" data-anchor-id="github-configuration-1">github configuration</h3>
 <p>Finally, we tell github about the cname:</p>
 <ul>
-<li>go to settings &gt;&gt; pages and tell github pages to use a <code>Custom domain</code> and specify your desired full domain</li>
-<li>wait a day, then enable https</li>
+<li>go to settings &gt;&gt; pages and tell github pages to use a <code>Custom domain</code> and specify your desired full domain.</li>
+<li>wait a day, then enable https.</li>
 </ul>
+<p>As a security precaution, please also <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages">verify your domain with github pages</a>.</p>
 
 
 </section>
@@ -383,150 +399,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

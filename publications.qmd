@@ -46,6 +46,8 @@ We also introduce some new theoretical tools that help analysing EP formally, in
 
 [Article link](https://arxiv.org/abs/1612.05053).
 
+**NeurIPS AABI Workshop 2016 Disney Research Paper Awards**
+
 If one wants to compute a Gaussian approximation of a probability distribution, there are three popular alternatives: the Laplace approximation, the Gaussian Variational Approximation, and Expectation Propagation.
 
 I show in this work that the approximations found by these three methods are actually very closely related, as they all correspond to variants from the same algorithm. This shines a bright light on the deep connections between these three algorithms.

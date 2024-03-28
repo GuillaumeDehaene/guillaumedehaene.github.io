@@ -15,17 +15,28 @@ website:
             - blog.qmd
         right:
             - publications.qmd
-            -   file: about.qmd
+            -   href: about.html
+                # file: about.qmd
                 text: About me
 
 format:
     html:
-        theme:
-            light: flatly
-            dark: darkly
+        # theme:
+        #     light: cosmo
+        #     dark: cosmo
+        # theme:
+        #     light: flatly
+        #     dark: darkly
+        theme: cosmo
+        mermaid:
+            theme: neutral
+        mainfont: "EB Garamond, Georgia, serif"
         toc: true
         include-in-header:
             text: |
+                <style>
+                @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap')
+                </style>
                 <script>
                 MathJax = {
                     tex: {
