@@ -21,26 +21,32 @@ website:
 
 format:
     html:
-        # theme:
-        #     light: cosmo
-        #     dark: cosmo
-        # theme:
-        #     light: flatly
-        #     dark: darkly
-        theme: cosmo
-        mermaid:
-            theme: neutral
+        theme:
+            - cosmo
+            - style.scss
         mainfont: "EB Garamond, Georgia, serif"
-        toc: true
+        monofont: Fira Code, consolas, courier, monospace
+        highlight-style: github
+
+        html-math-method:
+            method: mathjax
+            url: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.4/tex-mml-chtml.js"
         include-in-header:
             text: |
                 <style>
                 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap')
+                @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap')
                 </style>
                 <script>
                 MathJax = {
                     tex: {
                         tags: 'ams'  // should be 'ams', 'none', or 'all'
+                    },
+                    output: {
+                        font: 'mathjax-fira'
                     }
                 };
                 </script>
+        
+        toc: true
+        toc-location: right-body
