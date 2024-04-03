@@ -1,4 +1,10 @@
 /*-- scss:defaults --*/
+body {
+    // By default, EB Garamond uses "old-styles" numerics which have a baseline offset
+    // for some numerals. This turns that ugly feature off.
+    font-variant-numeric: lining-nums;
+}
+
 dl.code-annotation-container-grid dt {
     // needed because I have changed the font
     line-height: 20px !important;

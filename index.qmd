@@ -5,11 +5,18 @@ about:
     image: guillaume_dehaene.jpg
 aliases: 
     - about.html
+
+# anchored manually instead of automatically
+anchor-sections: false
+
+number-sections: false
+
+code-tools: false
 ---
 
 ## Artificial Intelligence Engineer {.unnumbered .unlisted}
 
-# Professional experience
+# Professional experience {.anchored}
 
 ## Artificial Intelligence Engineer
 
@@ -49,7 +56,7 @@ Expectation Propagation performs a smoothed gradient descent, G. Dehaene.
 statistical analysis
 - Supervision of one PhD. and three master theses.
 
-# Skills
+# Skills {.anchored}
 
 ## Computer science
 
@@ -79,7 +86,7 @@ statistical analysis
 - French (native)
 - English (Bilingual)
 
-# Education
+# Education {.anchored}
 
 **Ph.D. in neuroscience and statistics** \
 Université de Genève, Université Paris- Descartes \
@@ -93,7 +100,7 @@ Ecole Polytechnique Paris \
 ENS-Paris, EHESS, Université Paris-Descartes \
 2011-2012
 
-# Publications
+# Publications {.anchored}
 
 [**A deterministic and computable Bernstein-von Mises theorem**](publications.qmd#a-deterministic-and-computable-bernstein-von-mises-theorem) \
 G. Dehaene, 2019 \
@@ -113,7 +120,7 @@ Advances in Approximate Bayesian Inference NeuRIPS workshop \
 G. Dehaene and S. Barthelmé, 2015 \
 NeurIPS 2015
 
-# Hobbies
+# Hobbies {.anchored}
 
 - [Judo](https://www.jcgoncelin.com/)
 - Bandes dessinées

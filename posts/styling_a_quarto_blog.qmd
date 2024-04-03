@@ -82,11 +82,17 @@ format:
 2. Importing the fonts.
 3. Unrelated code: this numbers all equations.
 
-I also added an external style sheet: changing the font was causing a bad alignment in annotated code blocks.
+I also added an external style sheet: changing the font was causing a bad alignment in annotated code blocks, and I had to turn off a peculiar styling that Garamond applies to numerals.
 Check out [the latest version here](https://github.com/GuillaumeDehaene/guillaumedehaene.github.io/blob/main/style.scss):
 
 ```{.scss filename=style.scss}
 /*-- scss:defaults --*/
+body {
+    // By default, EG Garamond uses "old-styles" numerics which have a baseline offset
+    // for some numerals. This turns that ugly feature off.
+    font-variant-numeric: lining-nums;
+}
+
 dl.code-annotation-container-grid dt {
     // needed because I have changed the mono font
     line-height: 20px !important;
@@ -120,7 +126,18 @@ Given that [Quarto has built-in support for various free themes](https://quarto.
             mainfont: "EB Garamond, Georgia, serif"
     ```
 
-    I think you need to add a call to download the font from the web in the HTML header? I've added one anyway.
+    I'm unsure whether you need to add a call to download the font from the web in the HTML header: I've added one anyway.
+
+- annoyingly, Garamond uses *old-style* numerals by default. This setting makes some numerals, such as 3 and 4, align the middle of the character to the baseline of the text. I'm honestly surprised that this even exists and I've turned it off.
+
+    ```{.scss filename=style.scss}
+    /*-- scss:defaults --*/
+    body {
+        // By default, EB Garamond uses "old-styles" numerics which have a baseline offset
+        // for some numerals. This turns that ugly feature off.
+        font-variant-numeric: lining-nums;
+    }
+    ```
 
 ## Code blocks
 

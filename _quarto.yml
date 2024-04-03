@@ -10,6 +10,16 @@ website:
     title: "Guillaume Dehaene"
     site-url: www.guillaumedehaene.com
     page-footer: "This website was created with [Quarto](https://quarto.org/)." 
+    page-navigation: true
+    back-to-top-navigation: true
+    # page-footer:
+        #     center: 
+        #     - text: "About"
+        #         href: about.qmd
+        #     - text: "License"
+        #         href: license.qmd
+        #     - text: "Trademark"
+        #         href: trademark.qmd
     navbar:
         left:
             - blog.qmd
@@ -48,5 +58,31 @@ format:
                 };
                 </script>
         
+        # Provides a navigation menu for the content on the page
         toc: true
         toc-location: right-body
+        
+        # number sections like a latex article
+        number-sections: true
+        number-depth: 3
+        shift-heading-level-by: 1
+
+        anchor-sections: true
+
+        # provide code copy button
+        code-copy: true
+
+        # show qmd source
+        code-tools: true
+
+        # freeze computations
+        freeze: auto
+
+        link-external-icon: true
+        link-external-newwindow: true
+
+        lang: en
+
+        # remove html comments from source
+        strip-comments: true
+
