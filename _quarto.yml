@@ -9,17 +9,11 @@ project:
 website:
     title: "Guillaume Dehaene"
     site-url: www.guillaumedehaene.com
-    page-footer: "This website was created with [Quarto](https://quarto.org/)." 
     page-navigation: true
     back-to-top-navigation: true
-    # page-footer:
-        #     center: 
-        #     - text: "About"
-        #         href: about.qmd
-        #     - text: "License"
-        #         href: license.qmd
-        #     - text: "Trademark"
-        #         href: trademark.qmd
+    page-footer:
+        center:
+            - text: "Copyright Guillaume Dehaene. All rights reserved."
     navbar:
         left:
             - blog.qmd

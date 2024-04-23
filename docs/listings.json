@@ -2,10 +2,11 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/quarto_website_configuration.html",
-      "/posts/styling_a_quarto_blog.html",
-      "/posts/quarto_is_better.html",
-      "/posts/github_pages_setup_with_quarto.html"
+      "/posts/2024/04/installing_spotify_annoy_windows.html",
+      "/posts/2024/03/quarto_website_configuration.html",
+      "/posts/2024/03/styling_a_quarto_blog.html",
+      "/posts/2024/03/quarto_is_better.html",
+      "/posts/2024/03/github_pages_setup_with_quarto.html"
     ]
   }
 ]

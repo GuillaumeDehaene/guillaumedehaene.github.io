@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-04-23">
+<meta name="description" content="Spotify has shared the annoy library for nearest-neighbor calculations. However, trying to install it on Windows can give cryptic errors if python does not have access to the latest C compiler. In this post, I tell you how to fix this issue.">
 
-<title>Guillaume Dehaene – Blog</title>
+<title>Guillaume Dehaene – Installing spotify’s annoy on a Windows machine</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,24 +59,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,35 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap')
@@ -146,35 +117,6 @@ MathJax = {
 };
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.4/tex-mml-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -185,7 +127,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Guillaume Dehaene</span>
     </a>
   </div>
@@ -196,17 +138,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../../../publications.html"> 
 <span class="menu-text">My research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
 </ul>
@@ -221,21 +163,42 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="github pages">github pages <span class="quarto-category-count">(2)</span></div><div class="category" data-category="latex">latex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="quarto">quarto <span class="quarto-category-count">(4)</span></div><div class="category" data-category="typesetting">typesetting <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installation-errors-for-annoy" id="toc-installation-errors-for-annoy" class="nav-link active" data-scroll-target="#installation-errors-for-annoy"><span class="header-section-number">1</span> Installation errors for annoy</a></li>
+  <li><a href="#installing-the-c-compiler-on-windows" id="toc-installing-the-c-compiler-on-windows" class="nav-link" data-scroll-target="#installing-the-c-compiler-on-windows"><span class="header-section-number">2</span> Installing the C compiler on Windows</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Blog</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-</div>
+<div class="quarto-title-block"><div><h1 class="title">Installing spotify’s annoy on a Windows machine</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">python</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    <p>Spotify has shared the <code>annoy</code> library for nearest-neighbor calculations. However, trying to install it on Windows can give cryptic errors if python does not have access to the latest C compiler. In this post, I tell you how to fix this issue.</p>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 23, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -244,182 +207,37 @@ window.Quarto = {
 
 </header>
 
+<nav id="TOC-body" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installation-errors-for-annoy" id="toc-installation-errors-for-annoy"><span class="header-section-number">1</span> Installation errors for annoy</a></li>
+  <li><a href="#installing-the-c-compiler-on-windows" id="toc-installing-the-c-compiler-on-windows"><span class="header-section-number">2</span> Installing the C compiler on Windows</a></li>
+  </ul>
+</nav>
+<section id="installation-errors-for-annoy" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="installation-errors-for-annoy"><span class="header-section-number">1</span> Installation errors for annoy</h2>
+<p>When trying to install <a href="https://pypi.org/project/annoy/">the annoy python library</a>, you might encounter a cryptic error like: <code>error: command 'gcc'. failed with exit status 1</code> This error is due to python not having access to the latest C compiler.</p>
+<p>When searching for a solution to this problem, I found many poor solutions which instead advised to use pre-compiled versions. Please, please, please never use random compiled code from unvetted third parties: that’s a major security risk! Instead, this error is very easy to fix: we just have to install the latest version of the C compiler.</p>
+</section>
+<section id="installing-the-c-compiler-on-windows" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="installing-the-c-compiler-on-windows"><span class="header-section-number">2</span> Installing the C compiler on Windows</h2>
+<p>Microsoft provides <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">a download link for the C++ build tools</a>. This actually downloads an installer util which will itself install the build tools:</p>
+<ol type="1">
+<li><p>Download the file from the Microsoft website.</p></li>
+<li><p>Run it.</p></li>
+<li><p>Among the many installation options, select the latest version <em>Visual Studio Build Tools</em> (at the time of this writing, 2022).</p>
+<p><img src="visual_studio_build_tools.png" class="img-fluid"></p></li>
+</ol>
+<p>And done! You should now be able to install annoy:</p>
+<pre><code>pip install annoy</code></pre>
+<p>When installing python packages, please keep in mind the good practice of creating a separate environment for each project. I recommend using the built-in <code>venv</code> util for this, and accessing it via the VSCode command line.</p>
 
-<p>Welcome to my blog. I write mostly about:</p>
-<ul>
-<li>statistics, with a focus on Bayesian statistics, variational inference and theory.</li>
-<li>typesetting documents with Quarto and alternatives.</li>
-<li>programming, mostly in Python.</li>
-</ul>
 
 
+</section>
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="python" data-listing-date-sort="1713823200000" data-listing-file-modified-sort="1713880297100" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="196">
-<div class="thumbnail">
-<p><a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external"></a></p><a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external">
-</a><p><a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external">Installing spotify’s annoy on a Windows machine</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external">Spotify has shared the <code>annoy</code> library for nearest-neighbor calculations. However, trying to install it on Windows can give cryptic errors if python does not have access to the latest C compiler. In this post, I tell you how to fix this issue. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024/04/installing_spotify_annoy_windows.html" class="no-external">
-<div class="listing-date">
-Apr 23, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="quarto" data-listing-date-sort="1711839600000" data-listing-file-modified-sort="1712137389643" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1554">
-<div class="thumbnail">
-<p><a href="./posts/2024/03/quarto_website_configuration.html" class="no-external"></a></p><a href="./posts/2024/03/quarto_website_configuration.html" class="no-external">
-</a><p><a href="./posts/2024/03/quarto_website_configuration.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024/03/quarto_website_configuration.html" class="no-external">Configuring a Quarto website</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024/03/quarto_website_configuration.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
-quarto
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024/03/quarto_website_configuration.html" class="no-external">Setting up a Quarto website is not trivial. In this post, I discuss how to setup the <code>_quarto.yml</code> configuration file optimally. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024/03/quarto_website_configuration.html" class="no-external">
-<div class="listing-date">
-Mar 31, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="quarto,github pages" data-listing-date-sort="1711666800000" data-listing-file-modified-sort="1712136583695" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2454">
-<div class="thumbnail">
-<p><a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external"></a></p><a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external">
-</a><p><a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external">Styling a Quarto blog.</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
-quarto
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('github pages'); return false;">
-github pages
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external">Customizing a website is fun and interesting. Let’s learn how to tweak the appearance of a Quarto website to make it our own. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024/03/styling_a_quarto_blog.html" class="no-external">
-<div class="listing-date">
-Mar 29, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="typesetting,quarto,latex" data-listing-date-sort="1711580400000" data-listing-file-modified-sort="1712140694218" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1069">
-<div class="thumbnail">
-<p><a href="./posts/2024/03/quarto_is_better.html" class="no-external"></a></p><a href="./posts/2024/03/quarto_is_better.html" class="no-external">
-</a><p><a href="./posts/2024/03/quarto_is_better.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024/03/quarto_is_better.html" class="no-external">Don’t use Latex: Quarto is better!</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024/03/quarto_is_better.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('typesetting'); return false;">
-typesetting
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
-quarto
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('latex'); return false;">
-latex
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024/03/quarto_is_better.html" class="no-external">Latex is the defacto standard typesetting tool in large fractions of the academic world, but can we do better? Now that Quarto is around, the answer is yes! </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024/03/quarto_is_better.html" class="no-external">
-<div class="listing-date">
-Mar 28, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="quarto,github pages" data-listing-date-sort="1711494000000" data-listing-file-modified-sort="1711664155584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1014">
-<div class="thumbnail">
-<p><a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external"></a></p><a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external">
-</a><p><a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external">github pages setup for this website</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
-quarto
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('github pages'); return false;">
-github pages
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external">Setting up a Quarto website is not trivial. Here is my setup to publish a single github repository using the www.gandi.net DNS. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024/03/github_pages_setup_with_quarto.html" class="no-external">
-<div class="listing-date">
-Mar 27, 2024
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -898,21 +716,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Blog"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: posts</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Welcome to my blog.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>I write mostly about:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>statistics, with a focus on Bayesian statistics, variational inference and theory.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>typesetting documents with Quarto and alternatives.</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>programming, mostly in Python.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Installing spotify's annoy on a Windows machine"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> |</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Spotify has shared the `annoy` library for nearest-neighbor calculations.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    However, trying to install it on Windows can give cryptic errors if python does not have access to the latest C compiler.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    In this post, I tell you how to fix this issue.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "04/23/2024"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - python</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installation errors for annoy</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>When trying to install <span class="co">[</span><span class="ot">the annoy python library</span><span class="co">](https://pypi.org/project/annoy/)</span>, you might encounter a cryptic error like: <span class="in">`error: command 'gcc'. failed with exit status 1`</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>This error is due to python not having access to the latest C compiler.</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>When searching for a solution to this problem, I found many poor solutions which instead advised to use pre-compiled versions. Please, please, please never use random compiled code from unvetted third parties: that's a major security risk!</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Instead, this error is very easy to fix: we just have to install the latest version of the C compiler.</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installing the C compiler on Windows</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>Microsoft provides <span class="co">[</span><span class="ot">a download link for the C++ build tools</span><span class="co">](https://visualstudio.microsoft.com/visual-cpp-build-tools/)</span>.</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>This actually downloads an installer util which will itself install the build tools:</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Download the file from the Microsoft website.</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Run it.</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Among the many installation options, select the latest version *Visual Studio Build Tools* (at the time of this writing, 2022).</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="al">![](visual_studio_build_tools.png)</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>And done! You should now be able to install annoy:</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">pip install annoy</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>When installing python packages, please keep in mind the good practice of creating a separate environment for each project.</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>I recommend using the built-in <span class="in">`venv`</span> util for this, and accessing it via the VSCode command line.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
