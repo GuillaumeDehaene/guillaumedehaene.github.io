@@ -10,6 +10,15 @@ dl.code-annotation-container-grid dt {
     line-height: 20px !important;
 }
 
+#TOC-body {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    #TOC-body {
+        display: block;
+    }
+}
 
 // $mermaid-bg-color: $body-bg;
 // $mermaid-edge-color: $secondary;
