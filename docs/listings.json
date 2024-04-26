@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/2024/04/aligning_dicom_pixels.html",
       "/posts/2024/04/installing_spotify_annoy_windows.html",
       "/posts/2024/03/quarto_website_configuration.html",
       "/posts/2024/03/styling_a_quarto_blog.html",
