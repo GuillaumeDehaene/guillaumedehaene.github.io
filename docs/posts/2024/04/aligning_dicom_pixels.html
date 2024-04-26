@@ -203,6 +203,7 @@ window.Quarto = {
   <li><a href="#sec-finding-matrices" id="toc-sec-finding-matrices" class="nav-link" data-scroll-target="#sec-finding-matrices"><span class="header-section-number">2.2</span> Finding the matrices</a></li>
   </ul></li>
   <li><a href="#bloopers" id="toc-bloopers" class="nav-link" data-scroll-target="#bloopers"><span class="header-section-number">3</span> Bloopers</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -252,6 +253,7 @@ window.Quarto = {
   <li><a href="#sec-finding-matrices" id="toc-sec-finding-matrices"><span class="header-section-number">2.2</span> Finding the matrices</a></li>
   </ul></li>
   <li><a href="#bloopers" id="toc-bloopers"><span class="header-section-number">3</span> Bloopers</a></li>
+  <li><a href="#references" id="toc-references"><span class="header-section-number">4</span> References</a></li>
   </ul>
 </nav>
 <section id="the-problem" class="level2" data-number="1">
@@ -408,6 +410,17 @@ M_{\text{RAS} \leftarrow \text{NIFTI}}
 <li><p>After a little bit of (unsuccesfully) poking around and trying to read the docs, I asked a colleague about the issue. We quickly went from: “Oh, but all dicoms have the same orientation.” to “No wait, there are two.” to “Well technically it’s maybe three.”. We then found a fourth one later in our tests.</p></li>
 <li><p>The nibabel documentation, and the NIFTI docs I have found all repeat: “the NIFTI format uses a RAS reference frame” throughout. Imagine my surprise when I discovered the existence of the <code>affine</code> header.</p></li>
 <li><p>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <code>foo00000</code>) would actually be the first slice. <em>Ha</em>. <em>Ha</em>. <em>Ha</em>. They are in a random order instead.</p></li>
+</ol>
+</section>
+<section id="references" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="references"><span class="header-section-number">4</span> References</h2>
+<ol type="1">
+<li><p><a href="https://nipy.org/nibabel/dicom/dicom_orientation.html">Nibabel documentation on the orientation of dicom files</a>.</p></li>
+<li><p><a href="https://nipy.org/nibabel/dicom/dicom_orientation.html#i-j-columns-rows-in-dicom">Nibabel documentation on the transposition between voxels and the array coordinates</a>.</p></li>
+<li><p><a href="https://nipy.org/nibabel/dicom/dicom_orientation.html#d-affine-formulae">Nibabel documentation: full formula for the DICOM affine matrix</a>.</p></li>
+<li><p><a href="https://nipy.org/nibabel/nifti_images.html#the-nifti-affines">Nibabel documentation: the nifti affines</a>.</p></li>
+<li><p><a href="https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200037">Innolitics DICOM documentation: Image Orientation Patient</a>.</p></li>
+<li><p><a href="https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200032">Innolitics DICOM documentation: Image Position Patient</a>.</p></li>
 </ol>
 
 
@@ -1085,7 +1098,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The nibabel documentation, and the NIFTI docs I have found all repeat: "the NIFTI format uses a RAS reference frame" throughout. Imagine my surprise when I discovered the existence of the <span class="in">`affine`</span> header.</span>
 <span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <span class="in">`foo00000`</span>) would actually be the first slice. *Ha*. *Ha*. *Ha*. They are in a random order instead.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <span class="in">`foo00000`</span>) would actually be the first slice. *Ha*. *Ha*. *Ha*. They are in a random order instead.</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation on the orientation of dicom files</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html)</span>.</span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation on the transposition between voxels and the array coordinates</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html#i-j-columns-rows-in-dicom)</span>.</span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation: full formula for the DICOM affine matrix</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html#d-affine-formulae)</span>.</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation: the nifti affines</span><span class="co">](https://nipy.org/nibabel/nifti_images.html#the-nifti-affines)</span>.</span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Innolitics DICOM documentation: Image Orientation Patient</span><span class="co">](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200037)</span>.</span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Innolitics DICOM documentation: Image Position Patient</span><span class="co">](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200032)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

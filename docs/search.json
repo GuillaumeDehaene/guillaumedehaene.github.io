@@ -25,7 +25,7 @@
     "href": "posts/2024/04/aligning_dicom_pixels.html",
     "title": "Aligning a DICOM to a NIFTI, pixel-by-pixel",
     "section": "",
-    "text": "1 The problem\n  2 The solution\n  \n  2.1 A bit of geometry\n  2.2 Finding the matrices\n  \n  3 Bloopers"
+    "text": "1 The problem\n  2 The solution\n  \n  2.1 A bit of geometry\n  2.2 Finding the matrices\n  \n  3 Bloopers\n  4 References"
   },
   {
     "objectID": "posts/2024/04/aligning_dicom_pixels.html#the-problem",
@@ -47,6 +47,13 @@
     "title": "Aligning a DICOM to a NIFTI, pixel-by-pixel",
     "section": "3 Bloopers",
     "text": "3 Bloopers\nI can’t resist but tell you about all of the hilarious moments along the way were the DICOM spec blew up in my face.\n\nAfter a little bit of (unsuccesfully) poking around and trying to read the docs, I asked a colleague about the issue. We quickly went from: “Oh, but all dicoms have the same orientation.” to “No wait, there are two.” to “Well technically it’s maybe three.”. We then found a fourth one later in our tests.\nThe nibabel documentation, and the NIFTI docs I have found all repeat: “the NIFTI format uses a RAS reference frame” throughout. Imagine my surprise when I discovered the existence of the affine header.\nIn my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name foo00000) would actually be the first slice. Ha. Ha. Ha. They are in a random order instead."
+  },
+  {
+    "objectID": "posts/2024/04/aligning_dicom_pixels.html#references",
+    "href": "posts/2024/04/aligning_dicom_pixels.html#references",
+    "title": "Aligning a DICOM to a NIFTI, pixel-by-pixel",
+    "section": "4 References",
+    "text": "4 References\n\nNibabel documentation on the orientation of dicom files.\nNibabel documentation on the transposition between voxels and the array coordinates.\nNibabel documentation: full formula for the DICOM affine matrix.\nNibabel documentation: the nifti affines.\nInnolitics DICOM documentation: Image Orientation Patient.\nInnolitics DICOM documentation: Image Position Patient."
   },
   {
     "objectID": "posts/2024/04/aligning_dicom_pixels.html#footnotes",

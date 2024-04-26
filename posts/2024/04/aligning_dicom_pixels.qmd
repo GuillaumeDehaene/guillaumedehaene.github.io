@@ -181,3 +181,17 @@ I can't resist but tell you about all of the *hilarious* moments along the way w
 1. The nibabel documentation, and the NIFTI docs I have found all repeat: "the NIFTI format uses a RAS reference frame" throughout. Imagine my surprise when I discovered the existence of the `affine` header.
 
 1. In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name `foo00000`) would actually be the first slice. *Ha*. *Ha*. *Ha*. They are in a random order instead.
+
+# References
+
+1. [Nibabel documentation on the orientation of dicom files](https://nipy.org/nibabel/dicom/dicom_orientation.html).
+
+1. [Nibabel documentation on the transposition between voxels and the array coordinates](https://nipy.org/nibabel/dicom/dicom_orientation.html#i-j-columns-rows-in-dicom).
+
+1. [Nibabel documentation: full formula for the DICOM affine matrix](https://nipy.org/nibabel/dicom/dicom_orientation.html#d-affine-formulae).
+
+1. [Nibabel documentation: the nifti affines](https://nipy.org/nibabel/nifti_images.html#the-nifti-affines).
+
+1. [Innolitics DICOM documentation: Image Orientation Patient](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200037).
+
+1. [Innolitics DICOM documentation: Image Position Patient](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200032).
