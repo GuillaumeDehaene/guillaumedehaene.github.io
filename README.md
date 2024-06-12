@@ -1,6 +1,6 @@
-# Guillaume Dehaene personnal website with Quarto
+# Guillaume Dehaene personal website with Quarto
 
-This project is used to construct my [personal website](www.guillaumedehaene.com) using [Quarto](www.quarto.org).
+This project is used to construct my [personal website](https://www.guillaumedehaene.com) using [Quarto](https://www.quarto.org).
 
 All content on the website is my copyright and I give you no permission to reproduce it and publish it.
 
