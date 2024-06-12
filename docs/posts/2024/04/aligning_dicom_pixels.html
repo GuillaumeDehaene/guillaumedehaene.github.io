@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2024-04-23">
-<meta name="description" content="I have struggled at work to find how to align pixels. These pixels are particuarly vexing: they came from a DICOM file or a NIFTI file, which are both formats with awful documentation. If this helps a single person deal with this issue, then this post as reached its goal.">
+<meta name="description" content="I have struggled at work to find how to align pixels. These pixels are particuarly vexing: they came from a DICOM file or a NIFTI file, which are both formats with awful documentation. If this helps a single person deal with this issue, then this post has reached its goal.">
 
 <title>Guillaume Dehaene – Aligning a DICOM to a NIFTI, pixel-by-pixel</title>
 <style>
@@ -220,7 +220,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    <p>I have struggled at work to find how to align pixels. These pixels are particuarly vexing: they came from a DICOM file or a NIFTI file, which are both formats with <em>awful</em> documentation. If this helps a single person deal with this issue, then this post as reached its goal.</p>
+    <p>I have struggled at work to find how to align pixels. These pixels are particuarly vexing: they came from a DICOM file or a NIFTI file, which are both formats with <em>awful</em> documentation. If this helps a single person deal with this issue, then this post has reached its goal.</p>
   </div>
 </div>
 
@@ -269,11 +269,11 @@ window.Quarto = {
 <li><p>the axes might not be in the same order. For example, maybe we have:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dicom.shape <span class="op">==</span> <span class="dv">400</span>, <span class="dv">300</span>, <span class="dv">200</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nifti.shape <span class="op">==</span> <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>the axes might not be in the same order: maybe the first pixel in one format is the last pixel of the other format.</p></li>
+<li><p>the pixels of each axis might not be in the same order: maybe the first pixel in one format is the last pixel of the other format.</p></li>
 </ul>
 <p>The problem is thus quite simple to state: there are 48 possibilities<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Let’s just open the docs, read the correct header keys, figure out how the arrays are organized, code the correct re-ordering and call it a day. Right? <em>Right?</em></p>
 <p>Well, that’s certainly <em>a</em> plan. However, <em>No plan survives first contact with the enemy</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, and I can state with absolute certainty that the “documentation” of the DICOM and NIFTI standards (and ancillary software) is definitely hostile. Our initial hopes for a quick adventure were thus immediately blown to bits.</p>
-<p>Still, I pushed through and, after many bloopers, I have found the solution. I hope it can help somebody else in the future to tackle these f..antastic file formats.</p>
+<p>Still, I pushed through and, after many bloopers, I have found the solution. I hope it can help somebody else in the future to tackle these f…antastic file formats.</p>
 </section>
 <section id="the-solution" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="the-solution"><span class="header-section-number">2</span> The solution</h2>
@@ -407,9 +407,10 @@ M_{\text{RAS} \leftarrow \text{NIFTI}}
 <h2 data-number="3" class="anchored" data-anchor-id="bloopers"><span class="header-section-number">3</span> Bloopers</h2>
 <p>I can’t resist but tell you about all of the <em>hilarious</em> moments along the way were the DICOM spec blew up in my face.</p>
 <ol type="1">
+<li><p>The DICOM format does not define an ordering of DICOM slices. This means that different tools could choose different orderings. If you struggle with a mismatch of direction along the axis over which the slices are gathered, then the underlying issue might be that your tools do not align along this axis in the same way. NB: the difference in ordering in our case manifests in less than 5% of cases, so that was very tricky to debug.</p></li>
 <li><p>After a little bit of (unsuccesfully) poking around and trying to read the docs, I asked a colleague about the issue. We quickly went from: “Oh, but all dicoms have the same orientation.” to “No wait, there are two.” to “Well technically it’s maybe three.”. We then found a fourth one later in our tests.</p></li>
 <li><p>The nibabel documentation, and the NIFTI docs I have found all repeat: “the NIFTI format uses a RAS reference frame” throughout. Imagine my surprise when I discovered the existence of the <code>affine</code> header.</p></li>
-<li><p>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <code>foo00000</code>) would actually be the first slice. <em>Ha</em>. <em>Ha</em>. <em>Ha</em>. They are in a random order instead.</p></li>
+<li><p>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <code>slice_00000</code>) would actually be the first slice. <em>Ha</em>. <em>Ha</em>. <em>Ha</em>. They are in a random order instead.</p></li>
 </ol>
 </section>
 <section id="references" class="level2" data-number="4">
@@ -924,7 +925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    they came from a DICOM file or a NIFTI file,</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    which are both formats with *awful* documentation.</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    If this helps a single person deal with this issue,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    then this post as reached its goal.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    then this post has reached its goal.</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "04/23/2024"</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - random</span></span>
@@ -948,13 +949,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    nifti.shape <span class="op">==</span> <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">200</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the axes might not be in the same order: maybe the first pixel in one format is the last pixel of the other format.</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the pixels of each axis might not be in the same order: maybe the first pixel in one format is the last pixel of the other format.</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>The problem is thus quite simple to state: there are 48 possibilities^<span class="co">[</span><span class="ot">$3!=6$ possibilities for the order of the axes; $2^3=8$ possibilities for the order of each axis.</span><span class="co">]</span>. Let's just open the docs, read the correct header keys, figure out how the arrays are organized, code the correct re-ordering and call it a day. Right? *Right?*</span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>Well, that's certainly *a* plan. However, *No plan survives first contact with the enemy*^[<span class="co">[</span><span class="ot">History of this quote</span><span class="co">](https://quoteinvestigator.com/2021/05/04/no-plan/)</span>], and I can state with absolute certainty that the "documentation" of the DICOM and NIFTI standards (and ancillary software) is definitely hostile. Our initial hopes for a quick adventure were thus immediately blown to bits.</span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>Still, I pushed through and, after many bloopers, I have found the solution. I hope it can help somebody else in the future to tackle these f..antastic file formats.</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>Still, I pushed through and, after many bloopers, I have found the solution. I hope it can help somebody else in the future to tackle these f...antastic file formats.</span>
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu"># The solution</span></span>
 <span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
@@ -1094,25 +1095,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>I can't resist but tell you about all of the *hilarious* moments along the way were the DICOM spec blew up in my face.</span>
 <span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>After a little bit of (unsuccesfully) poking around and trying to read the docs, I asked a colleague about the issue. We quickly went from: "Oh, but all dicoms have the same orientation." to "No wait, there are two." to "Well technically it's maybe three.". We then found a fourth one later in our tests.</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The DICOM  format does not define an ordering of DICOM slices. This means that different tools could choose different orderings. If you struggle with a mismatch of direction along the axis over which the slices are gathered, then the underlying issue might be that your tools do not align along this axis in the same way. NB: the difference in ordering in our case manifests in less than 5% of cases, so that was very tricky to debug.</span>
 <span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The nibabel documentation, and the NIFTI docs I have found all repeat: "the NIFTI format uses a RAS reference frame" throughout. Imagine my surprise when I discovered the existence of the <span class="in">`affine`</span> header.</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>After a little bit of (unsuccesfully) poking around and trying to read the docs, I asked a colleague about the issue. We quickly went from: "Oh, but all dicoms have the same orientation." to "No wait, there are two." to "Well technically it's maybe three.". We then found a fourth one later in our tests.</span>
 <span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <span class="in">`foo00000`</span>) would actually be the first slice. *Ha*. *Ha*. *Ha*. They are in a random order instead.</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The nibabel documentation, and the NIFTI docs I have found all repeat: "the NIFTI format uses a RAS reference frame" throughout. Imagine my surprise when I discovered the existence of the <span class="in">`affine`</span> header.</span>
 <span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In my first calculation of the shift between two DICOM slices, I initially naively thought that the slices would be in order and that the first file (with name <span class="in">`slice_00000`</span>) would actually be the first slice. *Ha*. *Ha*. *Ha*. They are in a random order instead.</span>
 <span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation on the orientation of dicom files</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html)</span>.</span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
 <span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation on the transposition between voxels and the array coordinates</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html#i-j-columns-rows-in-dicom)</span>.</span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation on the orientation of dicom files</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html)</span>.</span>
 <span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation: full formula for the DICOM affine matrix</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html#d-affine-formulae)</span>.</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation on the transposition between voxels and the array coordinates</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html#i-j-columns-rows-in-dicom)</span>.</span>
 <span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation: the nifti affines</span><span class="co">](https://nipy.org/nibabel/nifti_images.html#the-nifti-affines)</span>.</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation: full formula for the DICOM affine matrix</span><span class="co">](https://nipy.org/nibabel/dicom/dicom_orientation.html#d-affine-formulae)</span>.</span>
 <span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Innolitics DICOM documentation: Image Orientation Patient</span><span class="co">](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200037)</span>.</span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Nibabel documentation: the nifti affines</span><span class="co">](https://nipy.org/nibabel/nifti_images.html#the-nifti-affines)</span>.</span>
 <span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Innolitics DICOM documentation: Image Position Patient</span><span class="co">](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200032)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Innolitics DICOM documentation: Image Orientation Patient</span><span class="co">](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200037)</span>.</span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Innolitics DICOM documentation: Image Position Patient</span><span class="co">](https://dicom.innolitics.com/ciods/rt-dose/image-plane/00200032)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
