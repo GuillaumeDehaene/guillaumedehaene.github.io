@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+// h1, h2, h3, h4, h5 {
+//     background-color: transparentize($color: red, $amount: 0.2);
+// }
+
+body {
+    // By default, EB Garamond uses "old-styles" numerics which have a baseline offset
+    // for some numerals. This turns that ugly feature off.
+    font-variant-numeric: lining-nums;
+}
+
+@media print {
+    // hide not-useful elements
+    // site header, site footer, back-to-top button, CV cover image, sidebar
+    header#quarto-header, footer, a#quarto-back-to-top, .quarto-about-marquee .about-image-container, #quarto-margin-sidebar {
+        display: none;
+    }
+
+    .show_only_on_print {
+        display: block;
+    }
+
+    .breakbefore {
+        break-before: always;
+    }
+}

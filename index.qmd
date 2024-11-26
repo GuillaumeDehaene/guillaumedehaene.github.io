@@ -6,15 +6,36 @@ about:
 aliases: 
     - about.html
 
-# anchored manually instead of automatically
-anchor-sections: false
+format:
+    html:
+        theme:
+            - cosmo
+            - style_cv.scss
+        
+        # Provides a navigation menu for the content on the page
+        toc: false
 
-number-sections: false
+        # anchored manually instead of automatically
+        anchor-sections: false
 
-code-tools: false
+        number-sections: false
+
+        code-tools: false
 ---
 
-## Artificial Intelligence Engineer {.unnumbered .unlisted}
+<!-- CV banner -->
+:::{.banner}
+
+<!-- [Guillaume]{#firstname} [Dehaene]{#name} -->
+
+<!-- [AI Engineer]{.banner-subtitle} -->
+
+[My goal is to tackle interesting AI problems by combining expert knowledge of deep learning, Bayesian inference, statistical theory and Python.]{.banner-elevator-pitch}
+
+[Website](http://www.guillaumedehaene.com) - [Blog](blog.qmd) - [Email](mailto:guillaume.dehaene+cv@gmail.com) - [LinkedIn]()
+
+:::
+
 
 # Professional experience {.anchored}
 
@@ -58,6 +79,8 @@ statistical analysis
 
 # Skills {.anchored}
 
+::: {layout-ncol=2}
+
 ## Computer science
 
 - Python (expert): django, pytorch, tensorflow
@@ -86,6 +109,8 @@ statistical analysis
 - French (native)
 - English (Bilingual)
 
+:::
+
 # Education {.anchored}
 
 **Ph.D. in neuroscience and statistics** \
@@ -100,7 +125,7 @@ Ecole Polytechnique Paris \
 ENS-Paris, EHESS, Université Paris-Descartes \
 2011-2012
 
-# Publications {.anchored}
+# Publications {.anchored .breakbefore}
 
 [**A deterministic and computable Bernstein-von Mises theorem**](publications.qmd#a-deterministic-and-computable-bernstein-von-mises-theorem) \
 G. Dehaene, 2019 \

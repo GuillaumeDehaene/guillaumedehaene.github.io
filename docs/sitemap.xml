@@ -5,10 +5,6 @@
     <lastmod>2024-03-28T09:01:14.748Z</lastmod>
   </url>
   <url>
-    <loc>www.guillaumedehaene.com/posts/2024/06/gitlab_redmine_connection.html</loc>
-    <lastmod>2024-06-12T13:24:18.984Z</lastmod>
-  </url>
-  <url>
     <loc>www.guillaumedehaene.com/posts/2024/04/installing_spotify_annoy_windows.html</loc>
     <lastmod>2024-04-23T13:51:37.100Z</lastmod>
   </url>
@@ -22,7 +18,7 @@
   </url>
   <url>
     <loc>www.guillaumedehaene.com/index.html</loc>
-    <lastmod>2024-04-03T08:28:49.860Z</lastmod>
+    <lastmod>2024-11-26T09:38:10.809Z</lastmod>
   </url>
   <url>
     <loc>www.guillaumedehaene.com/blog.html</loc>
@@ -43,5 +39,13 @@
   <url>
     <loc>www.guillaumedehaene.com/posts/2024/05/statistics_experiment_aar.html</loc>
     <lastmod>2024-06-12T07:37:12.077Z</lastmod>
+  </url>
+  <url>
+    <loc>www.guillaumedehaene.com/posts/2024/06/gitlab_redmine_connection.html</loc>
+    <lastmod>2024-06-12T13:24:18.984Z</lastmod>
+  </url>
+  <url>
+    <loc>www.guillaumedehaene.com/posts/2024/09/pruning_git_branches.html</loc>
+    <lastmod>2024-11-26T09:32:43.549Z</lastmod>
   </url>
 </urlset>

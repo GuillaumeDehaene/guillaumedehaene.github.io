@@ -1,0 +1,83 @@
+---
+draft: True
+
+title: "After action report: extending a streamlit application."
+description: |
+    Streamlit provides a great tool to create minimal proof-of-concept websites.
+    In this after action report, I detail how I tackled the challenge of extending an existing POC to improves its features.
+date: "06/15/2024"
+categories:
+  - python
+---
+
+Intro: expand a single-user streamlit POC into a multi-user platform.
+[Streamlit](https://streamlit.io/) is a great python library to quickly build websites with minimal web knowledge. At work, I was given the task of transforming a streamlit proof-of-concept (POC) into an expanded demo with more features and that could be used outside the company.
+
+The POC setup was the following. A user could come in, view the results of some specialized analysis, and input more data. However, whenever data was inputed, the analysis algorithm needed to run and would completely block the web application. Furthermore, the POC had no notion of users and so I was told to add user identification and to separate uploaded data between users.
+
+This project was my first time making a multi-service web application from scratch and I feel that I learned a lot. My key lessons would be:
+
+- if python needs to interact with a database, `django` is great tool. `sqlalchemy` was extremely hard to work with.
+- streamlit is a good basic webserver but it can only handle minimal load. It is extremely resource intensive.
+- I misjudged were the difficulty of the project was. I overestimated the complexity of the web API stuff, which pushed me towards `fastapi` when the critical issue was the database.
+
+# The task
+
+The POC I was tasked with improving was already in a good state. A user could:
+
+- upload data, in a very specific csv format, resulting from a preliminary analysis;
+- this would trigger a data-science pipeline to run on the data, blocking the server while it computes the result;
+- finally, the user would be able to visualize results of the analysis.
+
+The next step of this project would be to turn this POC into something that could be used by multiple naive users. This would require:
+
+- identifying each user,
+- securing access to the service,
+- enabling users to upload files in the standard DICOM format,
+- making the server responsive while analyses are run in the background,
+- managing the data enabling the above functions.
+
+My choice was to split the task into three "services":
+
+- a streamlit process, serving the website to users,
+- a data process handling all interaction with the database,
+- a worker process, performing the analysis when the user deposits a new file.
+
+In hindsight, this split was a mistake due to my lack of experience in multi-service setups. I detail in @sec-improved-setup how I would do it now.
+
+# Choosing the right tools
+
+I needed to choose the right libraries for this project. In this section, I go into greater detail in how I tackled these choices.
+
+The first choice was how to setup the API for the data process. I debated whether to use `fastapi` and `django`. Both are standard python webservers with `fastapi` being lighter and `django` being much heavier. Another key strength of `fastapi` is that it is built on top of `pydantic` which is a great python project that avoids a wide array of errors by checking, at runtime, that variables are all of the correct types. `fastapi` uses `pydantic` to check that requests provide the correct information, which makes debugging them much easier.
+
+At this point, I made a mistake of choosing `fastapi`. I was intimidated by the prospect of having a lot of web requests going between the streamlit server and the data process, and I thought that `fastapi` would provide better support here than django. Hower:
+
+- I did not need all those requests: I completely went overboard due to my lack of experience.
+- I could have connected directly to the database. See @sec-improved-setup.
+- I was drawn in by `pydantic`: I love being able to properly control types in my code. I have had so many cases were the weak-typing in python has blown up in my face in the past. But this project did not require it and it was a mistake to believe that this would help here.
+- `fastapi` is not that much better than `django` when it comes to setting up and handling direct requests. `django` aims mostly to serve html pages, but it can be used for anything. If you really need to focus more on just offering an API, then `django-ninja` and `django rest framework` make the API aspects a tiny bit better, but they're not even necessary.
+
+
+
+worker API choice
+
+database choice
+
+database API from python
+
+# Learning from mistakes
+
+pydantic was great but was tricky to master: it would have been better to start on a smaller project
+
+fast-api was great, but not needed
+
+sqlalchemy was horrible
+
+the absence of fixtures was really annoying
+
+# Improved setup {#sec-improved-setup}
+
+streamlit + django: connect directly to database, user identification; communicate with worker via database
+
+django worker: watch database for open work requests, do the work, write results to database and close work request
