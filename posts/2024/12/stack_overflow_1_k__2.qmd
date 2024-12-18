@@ -122,21 +122,21 @@ Now, we turn to reducing $n$ and $m$. This is more complex than reducing $k$ so 
 
 The key observation I have is the following.
 The situation is complex here because we have sampling without replacement from values in $[1, n]$.
-If we add sampling with replacement, we would a straightforward symmetry and the probability distribution of the sum would be uniform.
+If we had instead sampling with replacement, we would have a straightforward symmetry and the probability distribution of the sum would be uniform.
 
-Now observe further that we do not actually care about the precise value of $x_i$ but only about its value modulo $k$. For example, if $n = 6, m = 2, k = 3$, we are actually sampling from the ensemble: $\{1, 2, 3, 1, 2, 3 \}$. In this situation, the correlations due to sampling with replacement can be analyzed by in the following way:
+Now observe further that we do not actually care about the precise value of $x_i$ but only about its value modulo $k$. For example, if $n = 6, m = 2, k = 3$, we are actually sampling from the ensemble: $\{1, 2, 3, 1, 2, 3 \}$. In this situation, the correlations due to sampling with replacement can be analyzed in the following way:
 
-- either the two observations come from the same half, in which case they cannot take the same value, i.e. they are highly anti-correlated,
+- either the two observations come from the same half, in which case they cannot take the same value, i.e. they are conditionally highly anti-correlated,
 - or they come from two different halves, in which case they are conditionally independent.
 
 We can decompose the calculation of $p(n=6, m=2, k=3)$ by considering these two cases separately.
 
 We will generalize this approach of conditioning but we will need additional notation for this.
-Given some initial number of samples $m$, we will denote with a list $[c_1, c_2 \dots]$ the counts of the number of samples falling into each subset of size $k$ in $[1, n]$.
+Given some initial number of samples $m$, we will denote with a list $[c_1, c_2 \dots]$ the non-zero counts of the number of samples falling into the different subsets of size $k$ in $[1, n]$. NB: we do not distinguish the subsets. In our example, we have two cases: $[2]$ and $[1,1]$.
 
 The distribution of the counts depends on the number of groups $n / k$, the size of the groups $k$ and the number of samples $m$.
 Deriving its distribution is a complex exercise in combinatorics which I leave to the interested reader.
-Sampling from it is straightforward: we simply sample from $[1, n]$ and count the number of samples in each group.
+Sampling from it is straightforward: we simply sample from $[1, n]$, count the number of samples in each group, and sort them.
 
 Now, given a list of counts $[c_1 \dots]$, let us investigate the probability distribution of $\sum x_i \bmod k$.
 Again, we can bring to bear the translation argument, but inside of each group.
@@ -151,7 +151,7 @@ Now, assume that we have multiple counts such that their greatest common divisor
 By definition of the gcd, we are able to find combinations of the $c_j$ such that the sum reaches any value in $[0, k-1]$.
 Again, the probability distribution of the sum is uniform over $[0, k-1]$. The most general case of this argument is when $\operatorname{gcd}(k, c_1 \dots) = 1$.
 
-When the gcd is not 1, we cannot reach all values. Instead, we have partial symmetry, exactly like in @sec-reducing-k. Again, we can reduce the modulo in this situation:
+When the gcd is not 1, we cannot reach all values. Instead, we have partial symmetry, exactly like in @sec-reducing-k: we can only increase the count in increments of the gcd. Again, we can reduce the modulo in this situation:
 
 $$
 p(n, [c_1 \dots], k) = \frac{g}{k} p(k, [c_1 \dots ], g)

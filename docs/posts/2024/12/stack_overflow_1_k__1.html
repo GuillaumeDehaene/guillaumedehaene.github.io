@@ -276,7 +276,7 @@ window.Quarto = {
 <section id="simulation-code" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="simulation-code"><span class="header-section-number">2</span> Simulation code</h2>
 <p>The situation is straightforward to implement in python using numpy.</p>
-<div id="e4260cfb" class="cell" data-execution_count="1">
+<div id="30f9d6b3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binomtest</span>
 <span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -325,7 +325,7 @@ window.Quarto = {
 <p>There are <span class="math inline">\(n \choose m\)</span> possibilities for the selection of the cards. These possibilities are equally likely. Thus, the final probability must be some integer multiple of <span class="math inline">\(\left[ n \choose m \right]^{-1}\)</span>. Thus, if <span class="math inline">\(n \choose m\)</span> is not divisible by <span class="math inline">\(k\)</span>, then the conjecture is false.</p>
 <p>For example, for the triplet <span class="math inline">\(n=6, m=3, k=3\)</span>, we have <span class="math inline">\({n \choose m} = 20\)</span> and the conjecture must be false.</p>
 <p>This is confirmed by a simulation:</p>
-<div id="d534ab7e" class="cell" data-execution_count="2">
+<div id="5f1d0e07" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> comb</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">6</span></span>
@@ -340,7 +340,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of combinations: comb(n, m) = 20.0
 Number of combinations makes conjecture impossible: comb(n, m) % k = 2.0
-Estimated probability: 0.401 (0.95 interval: (0.391, 0.41))
+Estimated probability: 0.396 (0.95 interval: (0.386, 0.405))
 Conjectured probability: 0.333</code></pre>
 </div>
 </div>
@@ -369,7 +369,7 @@ Conjectured probability: 0.333</code></pre>
 <li>if <span class="math inline">\({n \choose m} \bmod k = 0\)</span> but the probability is different (which we measure using an exact 0.99 confidence interval) from <span class="math inline">\(1/k\)</span>, print out the details of the results.</li>
 </ul>
 <p>Note that we expect there to be roughly 1 percent of false positives.</p>
-<div id="7b751c9b" class="cell" data-execution_count="3">
+<div id="5f40163f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tabulate <span class="im">import</span> tabulate</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -414,82 +414,87 @@ Conjectured probability: 0.333</code></pre>
 <tr class="odd">
 <td style="text-align: left;">(4, 2, 2)</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.3181, 0.3424)</td>
+<td style="text-align: left;">(0.3157, 0.34)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(8, 2, 2)</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.4281, 0.4538)</td>
+<td style="text-align: left;">(0.4168, 0.4424)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(8, 4, 2)</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.529, 0.5548)</td>
+<td style="text-align: left;">(0.5302, 0.556)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(8, 6, 2)</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.4225, 0.4481)</td>
+<td style="text-align: left;">(0.4187, 0.4443)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(10, 4, 2)</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.5108, 0.5366)</td>
+<td style="text-align: left;">(0.5036, 0.5294)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(10, 6, 2)</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.4637, 0.4895)</td>
+<td style="text-align: left;">(0.4573, 0.4831)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(9, 3, 3)</td>
 <td style="text-align: right;">0.3333</td>
-<td style="text-align: left;">(0.3487, 0.3736)</td>
+<td style="text-align: left;">(0.3438, 0.3686)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(9, 6, 3)</td>
 <td style="text-align: right;">0.3333</td>
-<td style="text-align: left;">(0.3468, 0.3716)</td>
+<td style="text-align: left;">(0.3433, 0.368)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(8, 2, 4)</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2143, 0.2359)</td>
+<td style="text-align: left;">(0.2073, 0.2286)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(8, 6, 4)</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2099, 0.2314)</td>
+<td style="text-align: left;">(0.2068, 0.2281)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(12, 6, 4)</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: left;">(0.2272, 0.2492)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(12, 9, 4)</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: left;">(0.2522, 0.275)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(16, 2, 4)</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2257, 0.2477)</td>
+<td style="text-align: left;">(0.222, 0.2439)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(16, 14, 4)</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2211, 0.2429)</td>
+<td style="text-align: left;">(0.222, 0.2439)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(12, 2, 6)</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1417, 0.1602)</td>
+<td style="text-align: left;">(0.1457, 0.1644)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">(12, 10, 6)</td>
+<td style="text-align: left;">(12, 7, 6)</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1436, 0.1622)</td>
+<td style="text-align: left;">(0.1442, 0.1629)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">(24, 22, 6)</td>
+<td style="text-align: left;">(12, 10, 6)</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1463, 0.165)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">(28, 2, 7)</td>
-<td style="text-align: right;">0.1429</td>
-<td style="text-align: left;">(0.1442, 0.1629)</td>
+<td style="text-align: left;">(0.1421, 0.1606)</td>
 </tr>
 </tbody>
 </table>
@@ -513,7 +518,7 @@ Conjectured probability: 0.333</code></pre>
 <p>and offers a proof: there is a symmetry that enables us to show that the distribution of <span class="math inline">\(\sum X_i \bmod k\)</span> is uniform over <span class="math inline">\([1,k]\)</span>.</p>
 <p>This is straightforward to extend to the case <span class="math inline">\(\operatorname{gcd}(m, k) = 1\)</span>.</p>
 <p>In view of this, let’s rerun the analysis focusing only on cases where <span class="math inline">\(\operatorname{gcd}(m,k) \neq 1\)</span>.</p>
-<div id="26bab1a9" class="cell" data-execution_count="4">
+<div id="7d740556" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> []</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">7</span> <span class="op">+</span> <span class="dv">1</span>):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(k, k <span class="op">*</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">1</span>, k):</span>
@@ -561,181 +566,205 @@ Conjectured probability: 0.333</code></pre>
 <td style="text-align: left;">(4, 2, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.3079, 0.332)</td>
+<td style="text-align: left;">(0.3133, 0.3375)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(6, 2, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.3907, 0.416)</td>
+<td style="text-align: left;">(0.3941, 0.4195)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(6, 4, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.5929, 0.6182)</td>
+<td style="text-align: left;">(0.5812, 0.6066)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(8, 2, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.415, 0.4406)</td>
+<td style="text-align: left;">(0.4154, 0.441)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(8, 4, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.5369, 0.5626)</td>
+<td style="text-align: left;">(0.5287, 0.5545)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(8, 6, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.4195, 0.4451)</td>
+<td style="text-align: left;">(0.4125, 0.438)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(10, 2, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.4339, 0.4596)</td>
+<td style="text-align: left;">(0.438, 0.4637)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(10, 4, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.5095, 0.5353)</td>
+<td style="text-align: left;">(0.5112, 0.537)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(10, 6, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.4612, 0.487)</td>
+<td style="text-align: left;">(0.4639, 0.4897)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(10, 8, 2)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
-<td style="text-align: left;">(0.5441, 0.5698)</td>
+<td style="text-align: left;">(0.5448, 0.5705)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(6, 3, 3)</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0.3333</td>
-<td style="text-align: left;">(0.399, 0.4245)</td>
+<td style="text-align: left;">(0.3866, 0.4119)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(9, 3, 3)</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0.3333</td>
-<td style="text-align: left;">(0.3445, 0.3693)</td>
+<td style="text-align: left;">(0.3414, 0.3661)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(9, 6, 3)</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0.3333</td>
-<td style="text-align: left;">(0.3423, 0.367)</td>
+<td style="text-align: left;">(0.3335, 0.3581)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(12, 9, 3)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.3333</td>
+<td style="text-align: left;">(0.3385, 0.3632)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">(15, 12, 3)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.3333</td>
+<td style="text-align: left;">(0.3346, 0.3592)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(4, 2, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.1616, 0.1811)</td>
+<td style="text-align: left;">(0.1572, 0.1765)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(8, 2, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2023, 0.2235)</td>
+<td style="text-align: left;">(0.2069, 0.2282)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">(8, 4, 4)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: left;">(0.2506, 0.2734)</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">(8, 6, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2029, 0.2241)</td>
+<td style="text-align: left;">(0.2032, 0.2244)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">(12, 2, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2139, 0.2355)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">(12, 8, 4)</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2502, 0.273)</td>
+<td style="text-align: left;">(0.2123, 0.2338)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(12, 10, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2086, 0.23)</td>
+<td style="text-align: left;">(0.2057, 0.227)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(16, 2, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2156, 0.2373)</td>
+<td style="text-align: left;">(0.2225, 0.2444)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">(16, 8, 4)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: left;">(0.2504, 0.2732)</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">(16, 14, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2238, 0.2457)</td>
+<td style="text-align: left;">(0.2268, 0.2488)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">(20, 2, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2266, 0.2486)</td>
+<td style="text-align: left;">(0.226, 0.248)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">(20, 16, 4)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: left;">(0.2509, 0.2737)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(20, 18, 4)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: left;">(0.2269, 0.2489)</td>
+<td style="text-align: left;">(0.2205, 0.2423)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(6, 2, 6)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1265, 0.1442)</td>
+<td style="text-align: left;">(0.1274, 0.1452)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">(6, 3, 6)</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1872, 0.2078)</td>
+<td style="text-align: left;">(0.1846, 0.2051)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">(6, 4, 6)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1949, 0.2158)</td>
+<td style="text-align: left;">(0.1895, 0.2102)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">(12, 2, 6)</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.1667</td>
+<td style="text-align: left;">(0.1444, 0.1631)</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">(12, 8, 6)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1699, 0.1898)</td>
+<td style="text-align: left;">(0.1693, 0.1892)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">(12, 10, 6)</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1365, 0.1548)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">(18, 2, 6)</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1422, 0.1607)</td>
+<td style="text-align: left;">(0.1383, 0.1566)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">(30, 9, 6)</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: left;">(24, 22, 6)</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">0.1667</td>
-<td style="text-align: left;">(0.1461, 0.1648)</td>
+<td style="text-align: left;">(0.1471, 0.1659)</td>
 </tr>
 </tbody>
 </table>
@@ -751,8 +780,8 @@ Conjectured probability: 0.333</code></pre>
 <h2 data-number="7" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">7</span> Conclusions</h2>
 <ol type="1">
 <li><p>The conjecture is false, as is: we identified several counter-examples.</p></li>
-<li><p>If <span class="math inline">\(n \choose m \bmod k != 0\)</span> then the conjecture is clearly wrong.</p></li>
-<li><p>There are cases where <span class="math inline">\(n \choose m \bmod k = 0\)</span> but the conjecture is wrong. For example: <span class="math inline">\(n=4, m=2, k=2\)</span> where the probability is provably <span class="math inline">\(1/3\)</span> instead of <span class="math inline">\(1/2\)</span>.</p></li>
+<li><p>If <span class="math inline">\({n \choose m} \bmod k != 0\)</span> then the conjecture is clearly wrong.</p></li>
+<li><p>There are cases where <span class="math inline">\({n \choose m} \bmod k = 0\)</span> but the conjecture is wrong. For example: <span class="math inline">\(n=4, m=2, k=2\)</span> where the probability is provably <span class="math inline">\(1/3\)</span> instead of <span class="math inline">\(1/2\)</span>.</p></li>
 <li><p>If <span class="math inline">\(\operatorname{gcd}(m, k)=1\)</span> the conjecture is provably true.</p></li>
 <li><p>From a simulation study, it seems possible that when <span class="math inline">\(\operatorname{gcd}(m, k) \neq 1\)</span>, the probability is always different from <span class="math inline">\(1/k\)</span>.</p></li>
 </ol>
@@ -1467,9 +1496,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The conjecture is false, as is: we identified several counter-examples.</span>
 <span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>If $n \choose m \bmod k != 0$ then the conjecture is clearly wrong.</span>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>If ${n \choose m} \bmod k != 0$ then the conjecture is clearly wrong.</span>
 <span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>There are cases where $n \choose m \bmod k = 0$ but the conjecture is wrong. For example: $n=4, m=2, k=2$ where the probability is provably $1/3$ instead of $1/2$.</span>
+<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>There are cases where ${n \choose m} \bmod k = 0$ but the conjecture is wrong. For example: $n=4, m=2, k=2$ where the probability is provably $1/3$ instead of $1/2$.</span>
 <span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>If $\operatorname{gcd}(m, k)=1$ the conjecture is provably true.</span>
 <span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a></span>
