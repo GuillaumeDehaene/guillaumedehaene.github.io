@@ -2,6 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/2024/12/stack_overflow_1_k__2.html",
+      "/posts/2024/12/stack_overflow_1_k__1.html",
+      "/posts/2024/10/understanding_umvue.html",
       "/posts/2024/09/pruning_git_branches.html",
       "/posts/2024/06/gitlab_redmine_connection.html",
       "/posts/2024/05/statistics_experiment_aar.html",

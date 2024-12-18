@@ -1,8 +1,8 @@
 ---
-title: "Guillaume Dehaene"
-about:
-    template: marquee
-    image: guillaume_dehaene.jpg
+title: ""
+# about:
+#     template: marquee
+#     image: guillaume_dehaene.jpg
 aliases: 
     - about.html
 
@@ -10,10 +10,14 @@ format:
     html:
         theme:
             - cosmo
+            - style.scss
             - style_cv.scss
         
         # Provides a navigation menu for the content on the page
-        toc: false
+        toc: true
+        toc-location: left
+        toc-title: "Contents"
+        toc-depth: 2
 
         # anchored manually instead of automatically
         anchor-sections: false
@@ -24,20 +28,25 @@ format:
 ---
 
 <!-- CV banner -->
-:::{.banner}
+:::::: {.banner .column-page-right}
 
-<!-- [Guillaume]{#firstname} [Dehaene]{#name} -->
+# Guillaume Dehaene {#sec-header .anchored}
 
-<!-- [AI Engineer]{.banner-subtitle} -->
+## AI Engineer
 
 [My goal is to tackle interesting AI problems by combining expert knowledge of deep learning, Bayesian inference, statistical theory and Python.]{.banner-elevator-pitch}
 
-[Website](http://www.guillaumedehaene.com) - [Blog](blog.qmd) - [Email](mailto:guillaume.dehaene+cv@gmail.com) - [LinkedIn]()
+[Website](https://www.guillaumedehaene.com) - [Blog](blog.qmd) - [Email](mailto:guillaume.dehaene+cv@gmail.com) - [LinkedIn](https://www.linkedin.com/in/guillaume-dehaene-442306b3/)
 
-:::
+::::::
 
+::::: {.mobile-contents .hidden}
 
-# Professional experience {.anchored}
+[Experience](#sec-professional-experience) [Skills](#sec-skills) [Education](#sec-education) [Publications](#sec-publications)
+
+:::::
+
+# Professional experience{#sec-professional-experience .anchored}
 
 ## Artificial Intelligence Engineer
 
@@ -77,41 +86,54 @@ Expectation Propagation performs a smoothed gradient descent, G. Dehaene.
 statistical analysis
 - Supervision of one PhD. and three master theses.
 
-# Skills {.anchored}
+::::{.column-margin .skills}
 
-::: {layout-ncol=2}
+# Skills {#sec-skills .anchored}
 
-## Computer science
+## Programing
 
-- Python (expert): django, pytorch, tensorflow
-- Rust
-- Javascript
-- HTML, CSS
-- git
-- Docker
-- Linux admin
+|||
+|--------|------|
+| Python <br> (Django, Pytorch, Tensorflow) | [[]{.skill-inner data-level=9}]{.skill-outer} | 
+| Rust   | [[]{.skill-inner data-level=6}]{.skill-outer}  |
+| Javascript   | [[]{.skill-inner data-level=8}]{.skill-outer}  |
+| HTML, CSS   | [[]{.skill-inner data-level=7}]{.skill-outer}  |
+| Git   | [[]{.skill-inner data-level=9}]{.skill-outer}  |
+| Docker   | [[]{.skill-inner data-level=7}]{.skill-outer}  |
+| Linux admin   | [[]{.skill-inner data-level=7}]{.skill-outer}  |
+: {.striped .hover .borderless tbl-colwidths="[50, 50]"}
 
 ## Management
 
-- Agile project management
-- R&D supervision
-- CI / CD
+|||
+|--------|------|
+| Agile project management | [[]{.skill-inner data-level=8}]{.skill-outer} | 
+| R&D supervision   | [[]{.skill-inner data-level=7}]{.skill-outer}  |
+|CI / CD   | [[]{.skill-inner data-level=6}]{.skill-outer}  |
+: {.striped .hover .borderless tbl-colwidths="[50, 50]"}
+
 
 ## Artificial Intelligence
 
-- Neural networks
-- Computer vision
-- Statistical theory
-- Bayesian statistics
+|||
+|--------|------|
+| Neural networks | [[]{.skill-inner data-level=9}]{.skill-outer} | 
+| Computer vision   | [[]{.skill-inner data-level=9}]{.skill-outer}  |
+| Statistical theory  | [[]{.skill-inner data-level=10}]{.skill-outer}  |
+| Bayesian statistics   | [[]{.skill-inner data-level=10}]{.skill-outer}  |
+: {.striped .hover .borderless tbl-colwidths="[50, 50]"}
 
 ## Languages
 
-- French (native)
-- English (Bilingual)
+|||
+|--------|--------|
+| French | Native |
+| English | Bilingual |
+: {.striped .hover .borderless tbl-colwidths="[50, 50]"}
 
-:::
+::::
 
-# Education {.anchored}
+# Education {.anchored #sec-education}
 
 **Ph.D. in neuroscience and statistics** \
 Université de Genève, Université Paris- Descartes \
@@ -125,7 +147,7 @@ Ecole Polytechnique Paris \
 ENS-Paris, EHESS, Université Paris-Descartes \
 2011-2012
 
-# Publications {.anchored .breakbefore}
+# Publications {.anchored #sec-publications}
 
 [**A deterministic and computable Bernstein-von Mises theorem**](publications.qmd#a-deterministic-and-computable-bernstein-von-mises-theorem) \
 G. Dehaene, 2019 \
@@ -145,7 +167,7 @@ Advances in Approximate Bayesian Inference NeuRIPS workshop \
 G. Dehaene and S. Barthelmé, 2015 \
 NeurIPS 2015
 
-# Hobbies {.anchored}
+# Hobbies {.anchored .unlisted}
 
 - [Judo](https://www.jcgoncelin.com/)
 - Bandes dessinées

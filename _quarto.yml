@@ -5,6 +5,7 @@ project:
     output-dir: docs
     resources:
         - CNAME
+        - guillaume_dehaene.jpg
 
 website:
     title: "Guillaume Dehaene"
@@ -22,6 +23,10 @@ website:
             -   href: about.html
                 # file: about.qmd
                 text: About me
+
+execute:
+    # freeze computations instead of re-executing them each time
+    freeze: auto
 
 format:
     html:
@@ -44,7 +49,7 @@ format:
                 <script>
                 MathJax = {
                     tex: {
-                        tags: 'ams'  // should be 'ams', 'none', or 'all'
+                        tags: 'all'  // should be 'ams', 'none', or 'all'
                     },
                     output: {
                         font: 'mathjax-fira'
@@ -68,9 +73,6 @@ format:
 
         # show qmd source
         code-tools: true
-
-        # freeze computations
-        freeze: auto
 
         link-external-icon: true
         link-external-newwindow: true

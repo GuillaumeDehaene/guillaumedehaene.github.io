@@ -1,26 +1,80 @@
 /*-- scss:defaults --*/
-// h1, h2, h3, h4, h5 {
-//     background-color: transparentize($color: red, $amount: 0.2);
+
+// #photo {
+//     width: 250px;
+//     height: 250px;
+//     z-index: 2;
+//     background-image: url(guillaume_dehaene.jpg);
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     border-radius: 300px;
+//     box-shadow: 0px 0px 20px;
 // }
 
-body {
-    // By default, EB Garamond uses "old-styles" numerics which have a baseline offset
-    // for some numerals. This turns that ugly feature off.
-    font-variant-numeric: lining-nums;
+// Shifting the initial title to make the round-background work in the skills column
+h2 {
+    padding-top: 1rem;
 }
 
-@media print {
-    // hide not-useful elements
-    // site header, site footer, back-to-top button, CV cover image, sidebar
-    header#quarto-header, footer, a#quarto-back-to-top, .quarto-about-marquee .about-image-container, #quarto-margin-sidebar {
-        display: none;
+h5 {
+    font-weight: bold !important;
+    margin-left: 2rem;
+}
+
+.banner {
+    text-align: center;
+    background-color: #127099;
+    text-stroke: 1px black;
+    color: white;
+    border-radius: 2rem;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    h2 {
+        border-style: none;
     }
 
-    .show_only_on_print {
-        display: block;
+    a {
+        // text-stroke: 1px black;
+        color: white;
+        font-weight: bolder;
+    }
+}
+
+.skills {
+    background-color: #127099;
+    text-stroke: 1px black;
+    color: white;
+    border-radius: 2rem;
+    padding-left: 2%;
+
+    h2, h3 {
+        border-style: none;
+        margin-left: 2.5%;
     }
 
-    .breakbefore {
-        break-before: always;
+    table {
+        width: 90%;
+        margin-left: 5%;
+        border-style: none;
+    }
+}
+
+.skill-outer {
+    border: 3px solid white;
+    margin-left: 2rem;
+    border-radius: 3rem;
+    height: 1em;
+    width: 3rem;
+    display: inline-flex;
+}
+
+// Use a scss mapping here
+@for $i from 1 through 10 {
+    .skill-inner[data-level="#{$i}"] {
+        border-radius: 100px;
+        background-color: white;
+        width: calc(100% * $i / 10);
     }
 }

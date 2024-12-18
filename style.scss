@@ -10,28 +10,16 @@ dl.code-annotation-container-grid dt {
     line-height: 20px !important;
 }
 
+// Hide #TOC-body on wide screens
 #TOC-body {
     display: none;
 }
 
+// And show it one thin screens
 @media (max-width: 767.98px) {
     #TOC-body {
         display: block;
     }
-}
-
-// Tweaks for CV page
-div.quarto-about-marquee h1, div.quarto-about-marquee h2 {
-    border-bottom: 1px solid #dee2e6 !important;
-    padding-bottom: 0rem;
-}
-
-.notopmargin {
-    margin-top: -0.5em;
-}
-
-.cvtext_hide {
-    display: none;
 }
 
 @media print {
@@ -39,14 +27,6 @@ div.quarto-about-marquee h1, div.quarto-about-marquee h2 {
     // site header, site footer, back-to-top button, CV cover image, sidebar
     header#quarto-header, footer, a#quarto-back-to-top, .quarto-about-marquee .about-image-container, #quarto-margin-sidebar {
         display: none;
-    }
-
-    .show_only_on_print {
-        display: block;
-    }
-
-    .breakbefore {
-        break-before: always;
     }
 }
 
