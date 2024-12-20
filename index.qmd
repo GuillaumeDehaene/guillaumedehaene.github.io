@@ -27,7 +27,7 @@ format:
         code-tools: false
 ---
 
-<!-- CV banner -->
+<!-- Banner -->
 :::::: {.banner .column-page-right}
 
 # Guillaume Dehaene {#sec-header .anchored}
@@ -40,13 +40,14 @@ format:
 
 ::::::
 
+<!-- Mobile TOC -->
 ::::: {.mobile-contents .hidden}
 
 [Experience](#sec-professional-experience) [Skills](#sec-skills) [Education](#sec-education) [Publications](#sec-publications)
 
 :::::
 
-# Professional experience{#sec-professional-experience .anchored}
+# 🛠️ Professional experience{#sec-professional-experience .anchored}
 
 ## Artificial Intelligence Engineer
 
@@ -86,9 +87,10 @@ Expectation Propagation performs a smoothed gradient descent, G. Dehaene.
 statistical analysis
 - Supervision of one PhD. and three master theses.
 
+<!-- Skills in right-margin -->
 ::::{.column-margin .skills}
 
-# Skills {#sec-skills .anchored}
+# 🥇 Skills {#sec-skills .anchored}
 
 ## Programing
 
@@ -133,7 +135,7 @@ statistical analysis
 
 ::::
 
-# Education {.anchored #sec-education}
+# 🧑‍🎓 Education {.anchored #sec-education}
 
 **Ph.D. in neuroscience and statistics** \
 Université de Genève, Université Paris- Descartes \
@@ -147,7 +149,7 @@ Ecole Polytechnique Paris \
 ENS-Paris, EHESS, Université Paris-Descartes \
 2011-2012
 
-# Publications {.anchored #sec-publications}
+# 📖 Publications {.anchored #sec-publications}
 
 [**A deterministic and computable Bernstein-von Mises theorem**](publications.qmd#a-deterministic-and-computable-bernstein-von-mises-theorem) \
 G. Dehaene, 2019 \
