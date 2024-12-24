@@ -47,7 +47,7 @@ format:
 
 :::::
 
-# 🛠️ Professional experience{#sec-professional-experience .anchored}
+# {{< iconify mdi:hammer >}} Professional experience{#sec-professional-experience .anchored}
 
 ## Artificial Intelligence Engineer
 
@@ -90,7 +90,7 @@ statistical analysis
 <!-- Skills in right-margin -->
 ::::{.column-margin .skills}
 
-# 🥇 Skills {#sec-skills .anchored}
+# {{< iconify mdi:hammer >}} Skills {#sec-skills .anchored}
 
 ## Programing
 
@@ -135,7 +135,7 @@ statistical analysis
 
 ::::
 
-# 🧑‍🎓 Education {.anchored #sec-education}
+# {{< iconify mdi:flask >}} Education {.anchored #sec-education}
 
 **Ph.D. in neuroscience and statistics** \
 Université de Genève, Université Paris- Descartes \
@@ -149,7 +149,7 @@ Ecole Polytechnique Paris \
 ENS-Paris, EHESS, Université Paris-Descartes \
 2011-2012
 
-# 📖 Publications {.anchored #sec-publications}
+# {{< iconify mdi:book-open-blank-variant-outline >}} Publications {.anchored #sec-publications}
 
 [**A deterministic and computable Bernstein-von Mises theorem**](publications.qmd#a-deterministic-and-computable-bernstein-von-mises-theorem) \
 G. Dehaene, 2019 \
