@@ -31,7 +31,7 @@ For example, if we have two candidate estimators but the second candidate always
 The study of UMVUE is a limitting case of this logic in which we are able to prove that, among the class of unbiased estimators, there is a clear best candidate.
 As we will discuss, this is a very rare occurence.
 
-I was inspired by [this old question on stack-overflow and I have written a shorter version on this post over there](https://math.stackexchange.com/questions/1051346/optimal-unbiased-estimator/5015204#5015204).
+I was inspired by [this old question on stack-overflow and I have written a shorter version of this post over there](https://math.stackexchange.com/questions/1051346/optimal-unbiased-estimator/5015204#5015204).
 
 When writing this post, I assume that you already have a background level in some key concepts of statistical theory. I hope that it can bring these concepts into a new light. If self-studying, I recommend the Casella-Berger *Statistical Inference* book which should be easy to find.
 

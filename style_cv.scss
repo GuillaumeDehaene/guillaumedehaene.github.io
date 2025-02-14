@@ -64,7 +64,7 @@ h5 {
     display: inline-flex;
 }
 
-// Use a scss mapping here
+// Use a scss mapping to define the various width of skill level inner
 @for $i from 1 through 10 {
     .skill-inner[data-level="#{$i}"] {
         border-radius: 100px;
@@ -73,3 +73,14 @@ h5 {
         width: calc(100% * $i / 10);
     }
 }
+
+// @media print {  
+//     @page {
+//     //   size: 1240 1754px;
+//     // size: 1300 910px;
+//     // size: 2500 3500px;
+//     // size: 3500 2500px;
+//     size: 2000px 2600px;
+//     // size: 60 40cm;
+//   }
+// }

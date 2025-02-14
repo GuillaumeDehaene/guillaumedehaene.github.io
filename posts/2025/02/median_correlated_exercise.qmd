@@ -1,0 +1,176 @@
+---
+title: "Median of correlated data: an exercise from Stack-Overflow"
+description: |
+    A user on Stack Overflow proposes another very interesting problem:
+    how can you prove that the median is a decent estimator of the
+    shared mean of some data $X_i$ even in the presence of arbitrary correlations?
+date: "02/10/2025"
+categories:
+  - math
+  - stack-overflow
+  - exercise
+---
+
+[Initial question on SO](https://math.stackexchange.com/questions/3994777/is-the-variance-of-sample-median-lower-than-the-variance-of-any-individual-obser/4969698).
+
+> Let $X_i$ be $n$ random variables with common mean and variance $\mu, \sigma^2$.
+> Critically, do not assume any knowledge of the joint distribution of the $X_i$.
+> It is easy to see that any weighted mean of the $X_i$ is a better estimator of $\mu$ than any individual $X_i$.
+
+> What can we say about the sample median? Intuitively, it seems like it should also improve a single observation.
+
+The key feature of this problem is the very loose model under consideration:
+
+- perhaps all the $X_i$ are identical?
+- perhaps they are all anti-correlated?
+- perhaps they are correlated in precisely the right so that the median has variance more than $\sigma^2$?
+
+At the same time, I think the conjecture should feel very immediate to anybody with enough experience:
+
+- The median is "inside" of the cloud of points.
+- So it should be less variable than any single point of the cloud.
+
+I found this exercise quite fascinating due to how obvious it felt to me.
+The proof is very elegant and relies on a key decompostion that can apply to any model,
+even one as loose as this one.
+
+# Analysis of the weighted mean
+
+First, let us prove that any weighted mean is indeed better.
+
+Let $w_i \in [0, 1]$ be a vector of weights summing to $1$.
+The weighted mean estimator is:
+
+$$
+\hat \mu = \sum w_i X_i
+$$
+
+This estimator has the correct mean. Its variance is:
+
+$$
+\var (\hat \mu) = \sum_{i,j} w_i w_j \cov(X_i, X_j)
+$$
+
+Since each product $w_i, w_j$ is strictly positive, the variance is maximal when each covariance $\cov(X_i, X_j)$ takes its maximum value $\sigma^2$.
+We thus have:
+
+$$
+\var (\hat \mu) \leq \sigma^2 \sum_{i,j} w_i w_j = \sigma^2
+$$
+
+This concludes our proof.
+We find that, unless the $X_i$ are all identical, the weighted mean will have smaller variance.
+
+# Analysis of the median
+
+## The IID case
+
+To simplify the exposition, let us start from the simplest case: when the $X_i$ are IID.
+When that is the case, the order statistics $X_{(i)}$ are a sufficient statistic of the model.
+I.e. we can construct samples from the model by:
+
+- first sampling a group $n$ sorted points without specifying which is $X_1$, $X_2$, etc.
+- then, sampling the rank of each point in the group.
+
+When the $X_i$ are IID, the symmetry in the distribution makes is so that this second step is independent of the first.
+
+Let $S=(y_1 \dots y_n)$ denote the sorted data. Let $\mu(S)$ and $m(S)$ denote its mean and median and $v(S)$ the empirical variance:
+
+$$
+v(S) = \frac{1}{n} \sum (y_i - \mu(S))^2
+$$
+
+Note the normalization by $n$ and not $n-1$.
+
+To compute the performance of the median $m$ as an estimator of $\mu$, we can compute its squared error.
+Using the triangle inequality at $\mu(S)$, we find:
+
+$$
+\E (m - \mu)^2 \leq E(\mu(S) - \mu)^2 + E(\mu(S) - m(S))^2
+$$
+
+Simiarly, we can compute the performance of $X_1$.
+Conditionning on $S$, we find the usual decomposition of the squared error as a sum of a conditional mean squared and a variance squared.
+Since $X_1$ is sampled uniformly from $S$, the variance is exactly $v(S)$.
+
+$$
+\begin{align}
+E (X_1 - \mu)^2 &= E(\mu(S) - \mu)^2 + E(\mu(S) - X_1)^2 \\
+&= E(\mu(S) - \mu)^2 + v(S) \\
+\sigma^2 &= E(\mu(S) - \mu)^2 + v (S)
+\end{align}
+$$
+
+This yields a relationship between $\sigma^2$, $v(S)$ and the squared error of $\mu(S)$.
+
+Finally, observe that the squared distance between the median and mean $m(S)$ and $\mu(S)$ of any cloud of points is smaller than its variance $v(S)$.
+This is a consequence of the Cauchy inequality. Assume without loss of generality that $\mu(S) \geq m(S)$, then:
+
+$$
+\begin{align}
+\mu(S) - m(S)
+&=\frac{1}{n} \sum_i (y_i - m) \\
+&\leq \frac{1}{n} \sum_{y_i \geq m} (y_i - m) \\
+(\mu(S) - m(S))^2 &\leq \frac{1}{n} \left[ \sum_{y_i \geq m} (y_i - m) 1 \right] \\
+&\leq \frac{1}{n} \left[ \sum_{y_i \geq m} (y_i - m)^2 \right] \left[ \sum_{y_i \geq m} 1^2 \right]
+\end{align}
+$$
+
+Since $m$ is the median, the second sum is smaller than $n/2$.
+
+$$
+\begin{align}
+(\mu(S) - m(S))^2 &\leq \frac{1}{2} \sum_{y_i \geq m} (y_i - m)^2 \\
+&\leq \frac{1}{2} \sum_i (y_i - m)^2 \\
+&\leq \frac{1}{2} \left[ (\mu(S) - m(S))^2 + v(S) \right] \\
+\frac{1}{2}(\mu(S) - m(S))^2 &\leq \frac{1}{2} v(S) \\
+(\mu(S) - m(S))^2 &\leq v(S)
+\end{align}
+$$
+
+and we have the claimed bound.
+
+Combining all results, we find:
+
+$$
+\begin{align}
+\E (m - \mu)^2 &\leq E(\mu(S) - \mu)^2 + E(\mu(S) - m(S))^2 \\
+&\leq E(\mu(S) - \mu)^2 + v(S)
+&\leq \sigma^2
+\end{align}
+$$
+
+This concludes the proof: we have shown that the squared-error of the median is smaller thant $\sigma^2$.
+
+## The general case
+
+This decomposition of the model into two steps:
+
+- sampling the sorted dataset $S$,
+- then sorting the label of each point,
+
+remains valid in the general case.
+However, what can occur there is that the labels are dependent on the sorted dataset
+[^Interestingly, there is a still a wide class of models for which the labels are independent. This condition is exactly the definition of an exchangeable model.].
+
+Surprisingly, the proof carries through in that case too.
+This is due to the partial symmetry of the problem induced by the fact that all $X_i$ have the same marginal variance.
+Indeed, we only use independence to prove the decomposition:
+
+$$
+\sigma^2 = E (X_1 - \mu)^2 = E(\mu(S) - \mu)^2 + v (S)
+$$
+
+To prove this equality in the general case, consider selecting a random $X_i$ uniformly among them, after sampling their position.
+Let $Z$ denote this variable.
+The marginal variance of $Z$ is $\sigma^2$ and, conditional on $S$, $Z$ is uniformly distributed among the points in the sorted dataset.
+Our earlier proof of the decomposition thus carries through.
+
+# Generalizing
+
+This constructive proof is informative because it enables us to answer a greater question: what is the class of estimators such that they are always a better estimator of the mean than a single datapoint, regardless of correlation.
+
+From a careful analysis of this proof, you will be able to prove the following.
+
+- Any estimator which, for any group of sorted datapoints, is guaranteed to be closer to their empirical mean than $\sqrt {v(S)}$ has the property.
+- If an estimator is not always such that it is close to the empirical mean, then we can use those cases to construct a counter-example where the $X_i$ are exchangeable.

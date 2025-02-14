@@ -9,6 +9,7 @@ date: "12/10/2024"
 categories:
   - math
   - stack-overflow
+  - exercise
 ---
 
 # Problem statement

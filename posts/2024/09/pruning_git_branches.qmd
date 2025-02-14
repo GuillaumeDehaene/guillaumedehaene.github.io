@@ -18,22 +18,22 @@ Let's get straight to the point. Open your terminal inside the project, then run
 
 1. Create the file `branches_to_prune.txt` with all branches which do not have associated upstream branches.
 
-```bash
-git fetch --prune && git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}' >> branches_to_prune.txt
-```
+    ```bash
+    git fetch --prune && git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}' >> branches_to_prune.txt
+    ```
 
 1. Then review the file to make sure that everything is all right.
 
-```bash
-nano branches_to_prune.txt
-```
+    ```bash
+    nano branches_to_prune.txt
+    ```
 
 1. Erase all branches in the file and delete the file.
 
-```bash
-while read p; do branch -d $p; done < branches_to_prune.txt
-rm branches_to_prune.txt
-```
+    ```bash
+    while read p; do branch -d $p; done < branches_to_prune.txt
+    rm branches_to_prune.txt
+    ```
 
 # How it works
 
@@ -62,8 +62,6 @@ The pieces of information are a bit tricky to understand.
 `upstream` provides information about the reference upstream from the branch.
 `upstream:track` and `upstream:trackshort` provide information about whether the upstream is behind, ahead, equal compared to the local branch.
 Furthermore, `upstream:track` has the special value `[gone]` if the upstream is absent, which is what our final command parses.
-
-Another important 
 
 The command we use in the workflow is a machine-formatted variant:
 

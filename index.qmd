@@ -1,7 +1,7 @@
 ---
 title: ""
-# about:
-#     template: marquee
+about:
+    template: marquee
 #     image: guillaume_dehaene.jpg
 aliases: 
     - about.html
